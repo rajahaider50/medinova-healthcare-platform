@@ -1,0 +1,99 @@
+/* ============================================================
+   MediNova Animations — lightweight, purposeful
+   ============================================================ */
+
+@keyframes mn-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes mn-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mn-fade-down {
+  from { opacity: 0; transform: translateY(-14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mn-fade-left {
+  from { opacity: 0; transform: translateX(18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes mn-fade-right {
+  from { opacity: 0; transform: translateX(-18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes mn-scale-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes mn-scale-out {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.96); }
+}
+@keyframes mn-slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes mn-slide-down {
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
+}
+@keyframes mn-shimmer {
+  from { background-position: -460px 0; }
+  to { background-position: 460px 0; }
+}
+@keyframes mn-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes mn-pulse {
+  0% { box-shadow: 0 0 0 0 var(--color-primary-glow); }
+  70% { box-shadow: 0 0 0 8px rgba(139, 92, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+}
+@keyframes mn-pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.45); opacity: 0.65; }
+}
+@keyframes mn-glow {
+  from { box-shadow: 0 0 6px var(--color-primary-glow); }
+  to { box-shadow: 0 0 18px var(--color-primary-glow-strong); }
+}
+@keyframes mn-progress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+@keyframes mn-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(6px, -8px) scale(1.06); }
+}
+@keyframes mn-typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+@keyframes mn-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Utility animation classes */
+.anim-fade-in { animation: mn-fade-in var(--t-normal) both; }
+.anim-fade-up { animation: mn-fade-up var(--t-normal) both; }
+.anim-fade-down { animation: mn-fade-down var(--t-normal) both; }
+.anim-fade-left { animation: mn-fade-left var(--t-normal) both; }
+.anim-fade-right { animation: mn-fade-right var(--t-normal) both; }
+.anim-scale-in { animation: mn-scale-in var(--t-normal) both; }
+.anim-slide-up { animation: mn-slide-up var(--t-slow) both; }
+
+.anim-stagger > * {
+  animation: mn-fade-up var(--t-normal) both;
+}
+.anim-stagger > *:nth-child(1) { animation-delay: 0.03s; }
+.anim-stagger > *:nth-child(2) { animation-delay: 0.06s; }
+.anim-stagger > *:nth-child(3) { animation-delay: 0.09s; }
+.anim-stagger > *:nth-child(4) { animation-delay: 0.12s; }
+.anim-stagger > *:nth-child(5) { animation-delay: 0.15s; }
+.anim-stagger > *:nth-child(6) { animation-delay: 0.18s; }
+.anim-stagger > *:nth-child(7) { animation-delay: 0.21s; }
+.anim-stagger > *:nth-child(8) { animation-delay: 0.24s; }
+.anim-stagger > *:nth-child(9) { animation-delay: 0.27s; }
+.anim-stagger > *:nth-child(10) { animation-delay: 0.3s; }

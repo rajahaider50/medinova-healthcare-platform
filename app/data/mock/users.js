@@ -1,0 +1,96 @@
+/**
+ * MediNova — Mock: users (patients + staff).
+ * Demo data, clearly isolated for mock/demo mode.
+ */
+
+export const users = [
+  {
+    id: "u-1001", name: "Ayesha Khan", email: "patient@medinova.app", phone: "+92 300 1234567",
+    password: "hydjly", role: "user", status: "active",
+    gender: "female", dob: "1994-06-18", bloodGroup: "B+",
+    address: "House 12, Street 7, F-10/3, Islamabad", city: "Islamabad",
+    emergencyContact: "+92 321 7654321", emergencyName: "Imran Khan",
+    allergies: ["Penicillin"], medicalHistory: ["Asthma"], currentMedications: ["Ventolin Inhaler"],
+    preferredDoctor: "doc-01", language: "English", avatar: "",
+    notificationPrefs: { email: true, sms: true, push: true, reminders: true },
+    createdAt: "2026-03-15T10:00:00.000Z", lastLogin: "2026-08-06T09:12:00.000Z",
+  },
+  {
+    id: "u-1002", name: "Admin MediNova", email: "admin@medinova.app", phone: "+92 300 0000001",
+    password: "h1plm1tm", role: "admin", status: "active",
+    gender: "other", dob: "1988-01-01", bloodGroup: "O+", address: "MediNova HQ, Lahore",
+    city: "Lahore", emergencyContact: "", emergencyName: "", allergies: [], medicalHistory: [], currentMedications: [],
+    preferredDoctor: "", language: "English", avatar: "",
+    notificationPrefs: { email: true, sms: false, push: true, reminders: true },
+    createdAt: "2026-01-01T00:00:00.000Z", lastLogin: "2026-08-07T05:40:00.000Z",
+  },
+  {
+    id: "u-1003", name: "Dr. Salman Raza", email: "doctor@medinova.app", phone: "+92 300 1112233",
+    password: "hrr4las", role: "doctor", status: "active",
+    gender: "male", dob: "1979-03-22", bloodGroup: "A+", address: "Gulberg III, Lahore",
+    city: "Lahore", emergencyContact: "", emergencyName: "", allergies: [], medicalHistory: [], currentMedications: [],
+    preferredDoctor: "", language: "Urdu", avatar: "",
+    notificationPrefs: { email: true, sms: true, push: true, reminders: true },
+    createdAt: "2026-01-12T09:00:00.000Z", lastLogin: "2026-08-06T18:22:00.000Z",
+  },
+  {
+    id: "u-1004", name: "Hassan Raza", email: "hassan.raza@gmail.com", phone: "+92 333 4455667",
+    password: "h8f4x1m", role: "user", status: "active",
+    gender: "male", dob: "1988-11-02", bloodGroup: "AB+",
+    address: "Model Town, Lahore", city: "Lahore", emergencyContact: "+92 300 9988776", emergencyName: "Raza Ahmed",
+    allergies: ["Dust", "Latex"], medicalHistory: ["Hypertension"], currentMedications: ["Losartan 50"],
+    preferredDoctor: "doc-05", language: "Urdu", avatar: "",
+    notificationPrefs: { email: true, sms: false, push: true, reminders: true },
+    createdAt: "2026-03-20T11:00:00.000Z", lastLogin: "2026-08-05T14:30:00.000Z",
+  },
+  {
+    id: "u-1005", name: "Maria Saeed", email: "maria.saeed@gmail.com", phone: "+92 345 6677889",
+    password: "h8f4x1m", role: "user", status: "active",
+    gender: "female", dob: "1991-02-14", bloodGroup: "O-",
+    address: "DHA Phase 6, Karachi", city: "Karachi", emergencyContact: "+92 321 2233445", emergencyName: "Saeed Ahmed",
+    allergies: [], medicalHistory: ["Migraine"], currentMedications: [],
+    preferredDoctor: "doc-12", language: "English", avatar: "",
+    notificationPrefs: { email: true, sms: true, push: false, reminders: true },
+    createdAt: "2026-04-02T09:00:00.000Z", lastLogin: "2026-08-07T08:15:00.000Z",
+  },
+  {
+    id: "u-1006", name: "Bilal Hussain", email: "bilal.hussain@gmail.com", phone: "+92 300 5566778",
+    password: "h8f4x1m", role: "user", status: "suspended",
+    gender: "male", dob: "1997-08-30", bloodGroup: "B-",
+    address: "Satellite Town, Rawalpindi", city: "Rawalpindi", emergencyContact: "", emergencyName: "",
+    allergies: ["Peanuts"], medicalHistory: [], currentMedications: [],
+    preferredDoctor: "", language: "Urdu", avatar: "",
+    notificationPrefs: { email: false, sms: true, push: true, reminders: false },
+    createdAt: "2026-05-10T10:00:00.000Z", lastLogin: "2026-06-01T12:00:00.000Z",
+  },
+  {
+    id: "u-1007", name: "Sara Malik", email: "sara.malik@gmail.com", phone: "+92 321 8899001",
+    password: "h8f4x1m", role: "user", status: "active",
+    gender: "female", dob: "2000-12-05", bloodGroup: "A-",
+    address: "Gulshan-e-Iqbal, Karachi", city: "Karachi", emergencyContact: "+92 345 1122334", emergencyName: "Malik Javed",
+    allergies: [], medicalHistory: ["Anemia"], currentMedications: ["Replenind-M"],
+    preferredDoctor: "doc-04", language: "Urdu", avatar: "",
+    notificationPrefs: { email: true, sms: true, push: true, reminders: true },
+    createdAt: "2026-06-18T14:00:00.000Z", lastLogin: "2026-08-04T16:45:00.000Z",
+  },
+  {
+    id: "u-1008", name: "Support Agent", email: "support@medinova.app", phone: "+92 300 0000002",
+    password: "h8f4x1m", role: "support", status: "active",
+    gender: "other", dob: "1993-07-07", bloodGroup: "O+", address: "MediNova HQ, Lahore",
+    city: "Lahore", emergencyContact: "", emergencyName: "", allergies: [], medicalHistory: [], currentMedications: [],
+    preferredDoctor: "", language: "English", avatar: "",
+    notificationPrefs: { email: true, sms: false, push: true, reminders: false },
+    createdAt: "2026-02-05T00:00:00.000Z", lastLogin: "2026-08-07T06:10:00.000Z",
+  },
+  {
+    id: "u-1009", name: "Pharmacist Nova", email: "pharmacy@medinova.app", phone: "+92 300 0000003",
+    password: "h8f4x1m", role: "pharmacist", status: "active",
+    gender: "other", dob: "1990-04-12", bloodGroup: "A+", address: "Nova Pharmacy, Lahore",
+    city: "Lahore", emergencyContact: "", emergencyName: "", allergies: [], medicalHistory: [], currentMedications: [],
+    preferredDoctor: "", language: "Urdu", avatar: "",
+    notificationPrefs: { email: true, sms: true, push: true, reminders: false },
+    createdAt: "2026-02-10T00:00:00.000Z", lastLogin: "2026-08-06T20:00:00.000Z",
+  },
+];
+
+export default users;

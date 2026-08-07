@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5">
+  <title>MediNova — Smart Healthcare. Simple. Secure.</title>
+  <meta name="description" content="MediNova Healthcare — Smart Healthcare. Simple. Secure. Professional doctor, patient and pharmacy management platform.">
+  <meta name="theme-color" content="#070a14">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MediNova">
+  <link rel="canonical" href="/medinova-healthcare/">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/icons/favicon.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <meta property="og:title" content="MediNova — Smart Healthcare. Simple. Secure.">
+  <meta property="og:description" content="Professional doctor, patient and pharmacy management platform.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/typography.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/forms.css">
+  <link rel="stylesheet" href="styles/tables.css">
+  <link rel="stylesheet" href="styles/modals.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/sidebar.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/mobile.css">
+  <link rel="stylesheet" href="styles/charts.css">
+  <link rel="stylesheet" href="styles/errors.css">
+  <link rel="stylesheet" href="styles/animations.css">
+  <link rel="stylesheet" href="styles/utilities.css">
+</head>
+<body>
+  <div id="app-shell">
+    <div id="boot-screen" class="boot-screen">
+      <div class="boot-logo">
+        <img src="assets/logo/logo-mark.svg" alt="MediNova" width="72" height="72">
+      </div>
+      <h1 class="boot-title">MediNova</h1>
+      <p class="boot-tagline">Smart Healthcare. Simple. Secure.</p>
+      <div class="boot-loader"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <div id="error-root" aria-live="assertive"></div>
+  <div id="toast-root" aria-live="polite"></div>
+  <div id="modal-root"></div>
+  <div id="console-root"></div>
+  <div id="network-banner" class="network-banner" hidden></div>
+
+  <noscript>
+    <div class="noscript">
+      <h2>JavaScript Required</h2>
+      <p>MediNova requires JavaScript to run. Please enable JavaScript in your browser.</p>
+    </div>
+  </noscript>
+
+  <script type="module" src="app/main.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>

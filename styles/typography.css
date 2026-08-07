@@ -1,0 +1,86 @@
+/* ============================================================
+   MediNova Typography Scale
+   ============================================================ */
+
+.display-1 {
+  font-size: var(--fs-4xl);
+  font-weight: var(--fw-extrabold);
+  line-height: 1.15;
+}
+.display-2 {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+}
+.h1 {
+  font-size: var(--fs-2xl);
+}
+.h2 {
+  font-size: var(--fs-xl);
+}
+.h3 {
+  font-size: var(--fs-lg);
+}
+.h4 {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+}
+
+.body-sm {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+.body-xs {
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+}
+.caption {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: var(--fw-semibold);
+}
+.metric {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-3xl);
+  line-height: 1;
+  color: var(--text-primary-strong);
+  font-variant-numeric: tabular-nums;
+}
+.metric-lg {
+  font-size: var(--fs-4xl);
+}
+.metric-sm {
+  font-size: var(--fs-xl);
+}
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+}
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-strong { color: var(--text-primary-strong); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-danger { color: var(--danger); }
+.text-info { color: var(--info); }
+.text-purple { color: var(--color-primary); }
+.text-teal { color: var(--teal); }
+.text-cyan { color: var(--cyan); }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-uppercase { text-transform: uppercase; }
+.text-capitalize { text-transform: capitalize; }
+.fw-regular { font-weight: var(--fw-regular); }
+.fw-medium { font-weight: var(--fw-medium); }
+.fw-semibold { font-weight: var(--fw-semibold); }
+.fw-bold { font-weight: var(--fw-bold); }
+.lh-tight { line-height: var(--lh-tight); }
+.lh-normal { line-height: var(--lh-normal); }

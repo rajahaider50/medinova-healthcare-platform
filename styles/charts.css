@@ -1,0 +1,123 @@
+/* ============================================================
+   MediNova Charts (SVG) styles
+   ============================================================ */
+
+.chart-card {
+  padding: var(--space-5);
+}
+.chart-title {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.chart-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+}
+.legend-dot.purple { background: var(--chart-purple); }
+.legend-dot.cyan { background: var(--chart-cyan); }
+.legend-dot.teal { background: var(--chart-teal); }
+.legend-dot.blue { background: var(--chart-blue); }
+.legend-dot.amber { background: var(--chart-amber); }
+.legend-dot.green { background: var(--chart-green); }
+
+.mn-chart svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.mn-chart .chart-grid-line {
+  stroke: var(--chart-grid);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+.mn-chart .chart-axis-label {
+  fill: var(--text-muted);
+  font-size: 10px;
+  font-family: var(--font-body);
+}
+.mn-chart .chart-area {
+  fill-opacity: 0.22;
+}
+.mn-chart .chart-line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mn-chart .chart-dot {
+  stroke: var(--bg-base);
+  stroke-width: 2;
+  transition: r 0.15s ease;
+}
+.mn-chart .chart-bar {
+  rx: 4;
+  transition: opacity 0.15s ease;
+}
+.mn-chart .chart-bar:hover,
+.mn-chart .chart-dot:hover {
+  opacity: 0.75;
+}
+.mn-chart .chart-tooltip {
+  fill: var(--bg-elevated-2);
+  stroke: var(--glass-border-strong);
+}
+.mn-chart .chart-tooltip-text {
+  fill: var(--text-primary);
+  font-size: 10.5px;
+  font-family: var(--font-mono);
+}
+
+/* Donut */
+.donut-center {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  fill: var(--text-primary-strong);
+}
+.donut-center-label {
+  fill: var(--text-muted);
+  font-size: 10px;
+  font-family: var(--font-body);
+}
+
+/* Gauge */
+.gauge-track {
+  stroke: var(--bg-elevated);
+}
+.gauge-value {
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s var(--t-normal);
+}
+
+/* Sparkline */
+.sparkline {
+  width: 100%;
+  height: 44px;
+}
+.sparkline .spark-area {
+  fill-opacity: 0.18;
+}
+.sparkline .spark-line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}

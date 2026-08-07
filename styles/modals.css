@@ -1,0 +1,173 @@
+/* ============================================================
+   MediNova Modals & Drawers
+   ============================================================ */
+
+.modal-scrim {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-scrim);
+  backdrop-filter: blur(4px);
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  animation: mn-fade-in var(--t-normal) both;
+}
+.modal {
+  width: 100%;
+  max-width: 520px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background: var(--bg-glass-strong);
+  border: 1px solid var(--glass-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  animation: mn-scale-in var(--t-normal) both;
+  display: flex;
+  flex-direction: column;
+}
+.modal-lg { max-width: 720px; }
+.modal-sm { max-width: 400px; }
+.modal-xl { max-width: 960px; }
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border-bottom: 1px solid var(--glass-border);
+}
+.modal-header h3 {
+  font-size: var(--fs-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.modal-header h3 i { color: var(--color-primary); font-size: 16px; }
+.modal-body {
+  padding: var(--space-5);
+  overflow-y: auto;
+}
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--glass-border);
+}
+.modal-close {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all var(--t-fast);
+}
+.modal-close:hover {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+/* ---------- Bottom sheet (mobile) ---------- */
+.bottom-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-modal);
+  background: var(--bg-glass-strong);
+  border: 1px solid var(--glass-border-strong);
+  border-bottom: none;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5);
+  padding-bottom: env(safe-area-inset-bottom);
+  max-height: 88vh;
+  overflow-y: auto;
+  animation: mn-slide-up var(--t-normal) both;
+}
+.bottom-sheet .sheet-grip {
+  width: 42px;
+  height: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--glass-border-strong);
+  margin: var(--space-3) auto 0;
+}
+
+/* ---------- Drawer ---------- */
+.drawer-scrim {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-scrim);
+  z-index: var(--z-drawer);
+  animation: mn-fade-in var(--t-normal) both;
+}
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: min(360px, 88vw);
+  background: var(--bg-glass-strong);
+  border-right: 1px solid var(--glass-border-strong);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: var(--z-drawer);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  animation: mn-fade-right var(--t-normal) both;
+}
+.drawer.right {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid var(--glass-border-strong);
+  animation: mn-fade-left var(--t-normal) both;
+}
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--glass-border);
+}
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+}
+.drawer-footer {
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--glass-border);
+}
+
+/* ---------- Confirm dialog ---------- */
+.confirm-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin: 0 auto var(--space-4);
+}
+.confirm-icon.danger { background: var(--danger-soft); color: var(--danger); }
+.confirm-icon.success { background: var(--success-soft); color: var(--success); }
+.confirm-icon.warning { background: var(--warning-soft); color: var(--warning); }
+.confirm-icon.info { background: var(--info-soft); color: var(--info); }
+.confirm-title { font-size: var(--fs-lg); text-align: center; margin-bottom: var(--space-2); }
+.confirm-text {
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: var(--space-5);
+}

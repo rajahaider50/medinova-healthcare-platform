@@ -1,0 +1,21 @@
+{
+  "name": "medinova-healthcare",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MediNova Healthcare — Smart Healthcare. Simple. Secure. A production-style premium dark-luxury healthcare web app with user panel, admin panel, global error console and PWA support.",
+  "scripts": {
+    "test:syntax": "node tests/esm-syntax.mjs",
+    "test:imports": "node tests/imports.mjs",
+    "test:data": "node scripts/validate-data.mjs",
+    "test": "npm run test:syntax && npm run test:imports && npm run test:data && node tests/boot.mjs",
+    "validate": "npm test"
+  },
+  "devDependencies": {
+    "happy-dom": "^15.11.7"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

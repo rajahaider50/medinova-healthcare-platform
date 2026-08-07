@@ -1,0 +1,165 @@
+/* ============================================================
+   MediNova Header / Top Bar
+   ============================================================ */
+
+.top-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0 var(--space-5);
+  background: var(--bg-glass-strong);
+  border-bottom: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+  min-width: 0;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.header-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all var(--t-fast);
+  border: 1px solid transparent;
+}
+.header-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+.header-btn i { font-size: 16px; }
+.header-btn .notif-dot {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  min-width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--danger);
+  box-shadow: 0 0 0 3px var(--bg-base);
+  animation: mn-pulse-dot 2s infinite;
+}
+.header-btn .notif-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-base);
+}
+
+/* Header search */
+.header-search {
+  position: relative;
+  flex: 1;
+  max-width: 460px;
+}
+.header-search .input {
+  min-height: 40px;
+  padding-left: 40px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-input);
+  border-color: var(--glass-border);
+}
+.header-search > i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.header-search kbd {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border-strong);
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+/* System status pill */
+.sys-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  border: 1px solid var(--glass-border-strong);
+  background: var(--bg-surface-2);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+.sys-status:hover { border-color: var(--glass-border-strong); }
+.sys-status .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.sys-status.ok .dot { background: var(--success); box-shadow: 0 0 8px var(--success); animation: mn-pulse-dot 2.6s infinite; }
+.sys-status.warn .dot { background: var(--warning); box-shadow: 0 0 8px var(--warning); animation: mn-pulse-dot 1.4s infinite; }
+.sys-status.error .dot { background: var(--danger); box-shadow: 0 0 8px var(--danger); animation: mn-pulse-dot 1.1s infinite; }
+
+/* Header user menu */
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 4px 6px 4px 4px;
+  border-radius: var(--radius-pill);
+  transition: background var(--t-fast);
+  cursor: pointer;
+}
+.header-user:hover { background: var(--bg-hover); }
+.header-user .hu-info { line-height: 1.2; }
+.header-user .hu-name { font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--text-primary); }
+.header-user .hu-role { font-size: var(--fs-xs); color: var(--text-muted); }
+
+/* Theme toggle icon animation */
+.theme-toggle i { transition: transform var(--t-normal); }
+.theme-toggle:hover i { transform: rotate(30deg); }
+
+@media (max-width: 960px) {
+  .top-header { padding: 0 var(--space-3); }
+  .header-search { display: none; }
+  .sys-status .sys-label { display: none; }
+  .sys-status { padding: 8px; }
+  .sys-status .dot { margin: 0; }
+  .header-user .hu-info { display: none; }
+}
