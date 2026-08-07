@@ -1,0 +1,114 @@
+name: Build, Validate, Test & Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  # ─────────────────────────────────────────────────────────────
+  # STAGE 1 — VALIDATE (install + lint + test)
+  # ─────────────────────────────────────────────────────────────
+  validate:
+    name: Validate (install · lint · test)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (ESM syntax + import resolution)
+        run: npm run lint
+
+      - name: Validate data integrity + regression guards
+        run: npm run test:data
+
+      - name: Run test suite
+        run: npm test
+
+      - name: Verify PWA manifest + service worker exist
+        run: |
+          test -f manifest.webmanifest || (echo "manifest missing" && exit 1)
+          test -f sw.js || (echo "service worker missing" && exit 1)
+          test -f index.html || (echo "index.html missing" && exit 1)
+
+  # ─────────────────────────────────────────────────────────────
+  # STAGE 2 — BUILD (production artifact)
+  # ─────────────────────────────────────────────────────────────
+  build:
+    name: Build production artifact
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Copy site to build output
+        run: |
+          mkdir -p build
+          cp -r app assets styles Icons index.html manifest.webmanifest sw.js 404.html LICENSE README.md build/
+
+      - name: Verify build output
+        run: |
+          test -f build/index.html && echo "index.html present"
+          test -d build/app && echo "app/ present"
+          test -d build/styles && echo "styles/ present"
+          find build -type f | wc -l
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: medinova-build
+          path: build
+          retention-days: 1
+
+  # ─────────────────────────────────────────────────────────────
+  # STAGE 3 — DEPLOY to GitHub Pages
+  # ─────────────────────────────────────────────────────────────
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: medinova-build
+          path: _site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

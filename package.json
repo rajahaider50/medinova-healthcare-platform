@@ -10,6 +10,7 @@
     "test:data": "node scripts/validate-data.mjs",
     "test:qa": "node scripts/qa.mjs",
     "test": "npm run test:syntax && npm run test:imports && npm run test:data && npm run test:qa && node tests/boot.mjs",
+    "lint": "npm run test:syntax && npm run test:imports",
     "validate": "npm test"
   },
   "devDependencies": {
