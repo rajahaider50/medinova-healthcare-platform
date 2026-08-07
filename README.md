@@ -64,10 +64,10 @@ npm test      # syntax + imports + data integrity + boot smoke test
 
 ## Deployment (GitHub Pages)
 
-1. Push this repo to GitHub (`https://github.com/<user>/medinova-healthcare`).
-2. The included workflow `.github/workflows/pages.yml` builds, tests, and deploys automatically on `push` to `main`/`master`.
+1. Push this repo to GitHub (`https://github.com/<user>/medinova-healthcare-platform`).
+2. The included workflow `.github/workflows/deploy.yml` builds, tests, and deploys automatically on `push` to `main`/`master`.
 3. In **Settings → Pages**, the site is published from GitHub Actions. Live URL:
-   `https://<user>.github.io/medinova-healthcare/`
+   `https://<user>.github.io/medinova-healthcare-platform/`
 
 > Because the app uses a **hash router** (`#/...`), no server rewrite rules are needed — it works from any static host or subpath.
 

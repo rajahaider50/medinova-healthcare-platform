@@ -2,9 +2,9 @@
   "name": "MediNova Healthcare",
   "short_name": "MediNova",
   "description": "Smart Healthcare. Simple. Secure. A premium healthcare platform for appointments, prescriptions, medicines, orders and care.",
-  "id": "/medinova-healthcare/",
-  "start_url": "/medinova-healthcare/",
-  "scope": "/medinova-healthcare/",
+  "id": "/medinova-healthcare-platform/",
+  "start_url": "/medinova-healthcare-platform/",
+  "scope": "/medinova-healthcare-platform/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#070a14",
@@ -37,13 +37,13 @@
       "name": "Book an appointment",
       "short_name": "Book visit",
       "description": "Schedule a doctor appointment",
-      "url": "/medinova-healthcare/#/appointments/new"
+      "url": "/medinova-healthcare-platform/#/appointments/new"
     },
     {
       "name": "Pharmacy",
       "short_name": "Pharmacy",
       "description": "Browse medicines and refill prescriptions",
-      "url": "/medinova-healthcare/#/medicines"
+      "url": "/medinova-healthcare-platform/#/medicines"
     }
   ]
 }
