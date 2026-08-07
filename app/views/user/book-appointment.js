@@ -6,7 +6,7 @@ import { h } from "../../utils/html.js";
 import * as Router from "../../router/Router.js";
 import * as Db from "../../data/db.js";
 import * as Toast from "../../services/ToastService.js";
-import { doctors, timeSlots } from "../../data/mock/doctors.js";
+import { TIME_SLOTS } from "../../config/constants.js";
 import { currentUser } from "../../services/AuthService.js";
 import { money } from "../../utils/format.js";
 import { uid } from "../../utils/id.js";
@@ -16,6 +16,7 @@ import * as ErrorManager from "../../errors/ErrorManager.js";
 export async function view(ctx) {
   const preSelected = ctx.query.doctor || "";
   const user = currentUser();
+  const doctors = Db.collection("doctors").all();
 
   const doctorSelect = h("select", { class: "select", id: "book-doctor" }, [
     h("option", { value: "" }, "Select a doctor"),
@@ -38,7 +39,7 @@ export async function view(ctx) {
 
   const slotSelect = h("select", { class: "select", id: "book-slot" }, [
     h("option", { value: "" }, "Select a time slot"),
-    ...timeSlots.map((s) => h("option", { value: s }, s)),
+    ...TIME_SLOTS.map((s) => h("option", { value: s }, s)),
   ]);
 
   const typeSelect = h("select", { class: "select", id: "book-type" }, [

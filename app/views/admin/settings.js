@@ -1,15 +1,18 @@
 /**
  * MediNova — View: Admin platform settings.
+ * Editable brand, appointments and pharmacy settings persisted via BrandService.
  */
 
 import { h } from "../../utils/html.js";
-import { platformSettings } from "../../data/mock/settings.js";
+import * as Brand from "../../services/BrandService.js";
 import * as Toast from "../../services/ToastService.js";
+import { currentUser } from "../../services/AuthService.js";
 
 export async function view() {
-  const brand = platformSettings.brand;
-  const appt = platformSettings.appointments;
-  const pharm = platformSettings.pharmacy;
+  const settings = Brand.getSettings();
+  const brand = settings.brand;
+  const appt = settings.appointments;
+  const pharm = settings.pharmacy;
 
   function settingRow(label, sub, control) {
     return h("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", gap: "16px", padding: "14px 0", borderBottom: "1px solid var(--glass-border)" } }, [
@@ -18,21 +21,43 @@ export async function view() {
     ]);
   }
 
-  const onlineSwitch = h("mn-switch", { label: "Online consultations", checked: appt.enableOnline ? "checked" : null });
-  const inPersonSwitch = h("mn-switch", { label: "In-person appointments", checked: appt.enableInPerson ? "checked" : null });
-  const uploadSwitch = h("mn-switch", { label: "Prescription upload", checked: pharm.enablePrescriptionUpload ? "checked" : null });
-  const couponSwitch = h("mn-switch", { label: "Enable coupons", checked: pharm.enableCoupons ? "checked" : null });
+  function mkSwitch(label, on) {
+    const sw = h("mn-switch", { label });
+    if (on) sw.setAttribute("checked", "");
+    return sw;
+  }
+
+  const brandName = h("input", { class: "input", id: "set-brand-name", value: brand.name || "" });
+  const brandTagline = h("input", { class: "input", id: "set-brand-tagline", value: brand.tagline || "" });
+  const supportEmail = h("input", { class: "input", id: "set-support-email", type: "email", value: brand.supportEmail || "" });
+  const supportPhone = h("input", { class: "input", id: "set-support-phone", value: brand.supportPhone || "" });
+  const supportAddress = h("input", { class: "input", id: "set-support-address", value: brand.address || "" });
+  const accentColor = h("input", { class: "input", id: "set-accent-color", type: "color", value: /^#[0-9a-f]{6}$/i.test(brand.accentColor || "") ? brand.accentColor : "#8b5cf6", style: { width: "64px", height: "40px", padding: "2px" } });
+  const footerText = h("input", { class: "input", id: "set-footer-text", value: brand.footerText || "" });
+
+  const onlineSwitch = mkSwitch("Online consultations", !!appt.enableOnline);
+  const inPersonSwitch = mkSwitch("In-person appointments", !!appt.enableInPerson);
+  const slotDuration = h("input", { class: "input", type: "number", value: String(appt.slotDuration), style: { width: "90px" } });
+  const workingStart = h("input", { class: "input", type: "time", value: appt.workingStart || "09:00", style: { width: "110px" } });
+  const workingEnd = h("input", { class: "input", type: "time", value: appt.workingEnd || "18:00", style: { width: "110px" } });
+
+  const uploadSwitch = mkSwitch("Prescription upload", !!pharm.enablePrescriptionUpload);
+  const couponSwitch = mkSwitch("Enable coupons", !!pharm.enableCoupons);
+  const deliveryFee = h("input", { class: "input", type: "number", value: String(pharm.deliveryFee), style: { width: "90px" } });
+  const freeDeliveryAbove = h("input", { class: "input", type: "number", value: String(pharm.freeDeliveryAbove), style: { width: "90px" } });
 
   const brandPanel = h("div", { class: "mn-panel glass" }, [
     h("div", { class: "glass-header" }, [h("div", { class: "panel-heading" }, [h("div", { class: "icon-box icon-box-sm" }, h("i", { class: "fa-solid fa-building" })), h("div", {}, [h("div", { class: "panel-title" }, "Brand & Contact"), h("div", { class: "panel-subtitle" }, "Platform identity shown across the app")])])]),
     h("div", { class: "glass-body" }, [
       h("div", { class: "form-grid" }, [
-        h("div", { class: "form-group" }, [h("label", { class: "form-label" }, "Platform name"), h("input", { class: "input", value: brand.name, readonly: "" })]),
-        h("div", { class: "form-group" }, [h("label", { class: "form-label" }, "Tagline"), h("input", { class: "input", value: brand.tagline, readonly: "" })]),
-        h("div", { class: "form-group" }, [h("label", { class: "form-label" }, "Support email"), h("input", { class: "input", value: brand.supportEmail, readonly: "" })]),
-        h("div", { class: "form-group" }, [h("label", { class: "form-label" }, "Support phone"), h("input", { class: "input", value: brand.supportPhone, readonly: "" })]),
+        h("div", { class: "form-group" }, [h("label", { class: "form-label" }, "Platform name"), brandName]),
+        h("div", { class: "form-group" }, [h("label", { class: "form-label" }, "Tagline"), brandTagline]),
+        h("div", { class: "form-group" }, [h("label", { class: "form-label" }, "Support email"), supportEmail]),
+        h("div", { class: "form-group" }, [h("label", { class: "form-label" }, "Support phone"), supportPhone]),
+        h("div", { class: "form-group" }, [h("label", { class: "form-label" }, "Support address"), supportAddress]),
+        h("div", { class: "form-group" }, [h("label", { class: "form-label" }, "Accent color"), accentColor]),
+        h("div", { class: "form-group" }, [h("label", { class: "form-label" }, "Footer text"), footerText]),
       ]),
-      h("p", { style: { color: "var(--text-muted)", fontSize: "12px" } }, h("i", { class: "fa-solid fa-lock" }), " Brand settings are read-only in this demo build."),
     ]),
   ]);
 
@@ -41,8 +66,8 @@ export async function view() {
     h("div", { class: "glass-body" }, [
       settingRow("Online consultations", "Allow booking online video appointments", onlineSwitch),
       settingRow("In-person appointments", "Allow clinic visit bookings", inPersonSwitch),
-      settingRow("Slot duration", "Default minutes per slot", h("div", { style: { display: "flex", alignItems: "center", gap: "10px" } }, [h("input", { class: "input", type: "number", value: String(appt.slotDuration), style: { width: "90px" } }), h("span", { style: { color: "var(--text-muted)", fontSize: "12px" } }, "min")])),
-      settingRow("Working hours", "Available booking window", h("div", { style: { display: "flex", alignItems: "center", gap: "8px" } }, [h("input", { class: "input", type: "time", value: appt.workingStart, style: { width: "110px" } }), h("span", {}, "—"), h("input", { class: "input", type: "time", value: appt.workingEnd, style: { width: "110px" } })])),
+      settingRow("Slot duration", "Default minutes per slot", h("div", { style: { display: "flex", alignItems: "center", gap: "10px" } }, [slotDuration, h("span", { style: { color: "var(--text-muted)", fontSize: "12px" } }, "min")])),
+      settingRow("Working hours", "Available booking window", h("div", { style: { display: "flex", alignItems: "center", gap: "8px" } }, [workingStart, h("span", {}, "—"), workingEnd])),
     ]),
   ]);
 
@@ -51,12 +76,45 @@ export async function view() {
     h("div", { class: "glass-body" }, [
       settingRow("Prescription upload", "Require upload for Rx medicines", uploadSwitch),
       settingRow("Enable coupons", "Allow discount coupon codes", couponSwitch),
-      settingRow("Delivery fee", "Flat fee in Rs", h("div", { style: { display: "flex", alignItems: "center", gap: "10px" } }, [h("input", { class: "input", type: "number", value: String(pharm.deliveryFee), style: { width: "90px" } }), h("span", { style: { color: "var(--text-muted)", fontSize: "12px" } }, "Rs")])),
-      settingRow("Free delivery above", "Threshold order total", h("div", { style: { display: "flex", alignItems: "center", gap: "10px" } }, [h("input", { class: "input", type: "number", value: String(pharm.freeDeliveryAbove), style: { width: "90px" } }), h("span", { style: { color: "var(--text-muted)", fontSize: "12px" } }, "Rs")])),
+      settingRow("Delivery fee", "Flat fee in Rs", h("div", { style: { display: "flex", alignItems: "center", gap: "10px" } }, [deliveryFee, h("span", { style: { color: "var(--text-muted)", fontSize: "12px" } }, "Rs")])),
+      settingRow("Free delivery above", "Threshold order total", h("div", { style: { display: "flex", alignItems: "center", gap: "10px" } }, [freeDeliveryAbove, h("span", { style: { color: "var(--text-muted)", fontSize: "12px" } }, "Rs")])),
     ]),
   ]);
 
-  const saveBtn = h("button", { class: "btn btn-primary", onclick: () => Toast.success("Saved", "Platform settings updated (demo).") }, h("i", { class: "fa-solid fa-check" }), " Save Changes");
+  const saveBtn = h("button", {
+    class: "btn btn-primary",
+    onclick: () => {
+      try {
+        Brand.saveSettings({
+          brand: {
+            name: brandName.value.trim(),
+            tagline: brandTagline.value.trim(),
+            supportEmail: supportEmail.value.trim(),
+            supportPhone: supportPhone.value.trim(),
+            address: supportAddress.value.trim(),
+            accentColor: accentColor.value,
+            footerText: footerText.value.trim(),
+          },
+          appointments: {
+            enableOnline: onlineSwitch.hasAttribute("checked"),
+            enableInPerson: inPersonSwitch.hasAttribute("checked"),
+            slotDuration: Number(slotDuration.value) || 30,
+            workingStart: workingStart.value,
+            workingEnd: workingEnd.value,
+          },
+          pharmacy: {
+            enablePrescriptionUpload: uploadSwitch.hasAttribute("checked"),
+            enableCoupons: couponSwitch.hasAttribute("checked"),
+            deliveryFee: Number(deliveryFee.value) || 0,
+            freeDeliveryAbove: Number(freeDeliveryAbove.value) || 0,
+          },
+        }, currentUser()?.id);
+        Toast.success("Settings saved", "Platform settings updated across the app.");
+      } catch (err) {
+        Toast.error("Save failed", err.message || "Please try again.");
+      }
+    },
+  }, h("i", { class: "fa-solid fa-check" }), " Save Changes");
 
   const header = h("div", { style: { marginBottom: "24px" } }, [
     h("h1", { style: { margin: 0, fontSize: "26px" } }, "Platform Settings"),

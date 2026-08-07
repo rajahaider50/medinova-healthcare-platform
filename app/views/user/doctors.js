@@ -4,7 +4,7 @@
 
 import { h } from "../../utils/html.js";
 import * as Store from "../../state/store.js";
-import { doctors, specialties } from "../../data/mock/doctors.js";
+import * as Db from "../../data/db.js";
 import { money, truncate } from "../../utils/format.js";
 import { debounce } from "../../utils/debounce.js";
 import { navigate } from "../../router/Router.js";
@@ -25,13 +25,13 @@ function doctorCard(d) {
       ]),
     ]),
     h("div", { style: { display: "flex", alignItems: "center", gap: "8px", marginTop: "14px" } }, [
-      h("span", { class: "rating" }, h("i", { class: "fa-solid fa-star" }), h("span", { class: "rating-value" }, d.rating)),
-      h("span", { class: "rating-count" }, `(${d.reviews} reviews)`),
-      h("span", { class: "ml-auto", style: { fontWeight: 700, color: "var(--color-primary)" } }, money(d.fee - d.discount)),
+      h("span", { class: "rating" }, h("i", { class: "fa-solid fa-star" }), h("span", { class: "rating-value" }, d.rating || 0)),
+      h("span", { class: "rating-count" }, `(${d.reviews || 0} reviews)`),
+      h("span", { class: "ml-auto", style: { fontWeight: 700, color: "var(--color-primary)" } }, money((d.fee || 0) - (d.discount || 0))),
       h("span", { style: { fontSize: "11px", color: "var(--text-muted)" } }, "/ visit"),
     ]),
     h("div", { style: { marginTop: "12px", display: "flex", gap: "8px", flexWrap: "wrap" } },
-      d.services.slice(0, 3).map((s) => h("span", { class: "chip chip-filter", style: { pointerEvents: "none" } }, s))),
+      (d.services || []).slice(0, 3).map((s) => h("span", { class: "chip chip-filter", style: { pointerEvents: "none" } }, s))),
   ]);
 }
 
@@ -40,6 +40,9 @@ export async function view() {
     specialty: Store.get("route")?.query?.specialty || "",
     search: Store.get("route")?.query?.search || "",
   };
+
+  const doctors = Db.collection("doctors").all();
+  const specialties = [...new Set(doctors.map((d) => d.specialty).filter(Boolean))].sort();
 
   const searchInput = h("input", {
     class: "input",
@@ -60,7 +63,7 @@ export async function view() {
     const q = (searchInput.value || "").trim().toLowerCase();
     const spec = specialtySelect.value;
     const filtered = doctors.filter((d) => {
-      const matchesQ = !q || d.name.toLowerCase().includes(q) || d.specialty.toLowerCase().includes(q);
+      const matchesQ = !q || (d.name || "").toLowerCase().includes(q) || (d.specialty || "").toLowerCase().includes(q);
       const matchesSpec = !spec || d.specialty === spec;
       return matchesQ && matchesSpec;
     });

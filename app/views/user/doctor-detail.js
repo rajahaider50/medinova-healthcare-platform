@@ -4,15 +4,14 @@
 
 import { h } from "../../utils/html.js";
 import * as Router from "../../router/Router.js";
-import { doctors } from "../../data/mock/doctors.js";
-import { reviews } from "../../data/mock/reviews.js";
+import * as Db from "../../data/db.js";
 import { money } from "../../utils/format.js";
 import { timeAgo } from "../../utils/date.js";
 import * as Toast from "../../services/ToastService.js";
 
 export async function view(ctx) {
   const slug = ctx.params.slug;
-  const doc = doctors.find((d) => d.slug === slug);
+  const doc = Db.collection("doctors").findOne({ slug });
 
   if (!doc) {
     return h("div", { class: "error-state" }, [
@@ -23,7 +22,7 @@ export async function view(ctx) {
     ]);
   }
 
-  const docReviews = reviews.filter((r) => r.doctorId === doc.id);
+  const docReviews = Db.collection("reviews").find({ doctorId: doc.id });
 
   const infoRow = (icon, text) =>
     h("div", { style: { display: "flex", gap: "10px", alignItems: "flex-start", padding: "8px 0" } }, [
@@ -35,10 +34,10 @@ export async function view(ctx) {
     h("div", { class: "flex items-center justify-between" }, [
       h("div", {}, [
         h("div", { style: { fontWeight: 700, fontSize: "22px", color: "var(--color-primary)" } },
-          doc.discount ? [h("s", { style: { color: "var(--text-muted)", fontSize: "15px", marginRight: "8px" } }, money(doc.fee)), money(doc.fee - doc.discount)] : money(doc.fee)),
+          (doc.discount || 0) ? [h("s", { style: { color: "var(--text-muted)", fontSize: "15px", marginRight: "8px" } }, money(doc.fee || 0)), money((doc.fee || 0) - (doc.discount || 0))] : money(doc.fee || 0)),
         h("div", { style: { color: "var(--text-muted)", fontSize: "12px" } }, "per consultation"),
       ]),
-      h("span", { class: "badge badge-neutral" }, `${doc.experience}+ years exp.`),
+      h("span", { class: "badge badge-neutral" }, `${doc.experience || 0}+ years exp.`),
     ]),
     h("a", { class: "btn btn-primary btn-lg btn-block", style: { marginTop: "16px" }, href: `#/appointments/book?doctor=${doc.id}` }, h("i", { class: "fa-solid fa-calendar-plus" }), " Book Appointment"),
     h("a", { class: "btn btn-outline btn-block", style: { marginTop: "10px" }, href: `#/messages?doctor=${doc.id}` }, h("i", { class: "fa-solid fa-comment-medical" }), " Send Message"),
@@ -48,43 +47,43 @@ export async function view(ctx) {
       onclick: () => Toast.success("Added to favorites", `${doc.name} is now in your favorites.`),
     }, h("i", { class: "fa-solid fa-heart" }), " Save Doctor"),
     h("div", { class: "divider", style: { margin: "16px 0" } }),
-    infoRow("fa-certificate", doc.qualification),
-    infoRow("fa-registered", `PMC Reg: ${doc.registrationNo}`),
-    infoRow("fa-language", doc.languages.join(", ")),
-    infoRow("fa-location-dot", `${doc.location}`),
-    infoRow("fa-hospital", doc.hospital),
+    infoRow("fa-certificate", doc.qualification || ""),
+    infoRow("fa-registered", `PMC Reg: ${doc.registrationNo || ""}`),
+    infoRow("fa-language", (doc.languages || []).join(", ")),
+    infoRow("fa-location-dot", `${doc.location || ""}`),
+    infoRow("fa-hospital", doc.hospital || ""),
   ]);
 
   const availability = h("div", { class: "mn-panel glass" }, [
     h("div", { class: "glass-header" }, [h("div", { class: "panel-heading" }, [h("div", { class: "icon-box icon-box-sm" }, h("i", { class: "fa-solid fa-clock" })), h("div", {}, [h("div", { class: "panel-title" }, "Available Slots"), h("div", { class: "panel-subtitle" }, "Next available times")])])]),
-    h("div", { class: "glass-body" }, doc.timings.slice(0, 3).map((t) =>
+    h("div", { class: "glass-body" }, (doc.timings || []).slice(0, 3).map((t) =>
       h("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", borderBottom: "1px solid var(--glass-border)" } }, [
         h("span", { style: { fontWeight: 600, fontSize: "14px" } }, t.day),
         h("div", { style: { display: "flex", gap: "6px", flexWrap: "wrap" } },
-          t.slots.slice(0, 4).map((s) => h("span", { class: "chip chip-filter" }, s))),
+          (t.slots || []).slice(0, 4).map((s) => h("span", { class: "chip chip-filter" }, s))),
       ]))),
   ]);
 
   const services = h("div", { class: "mn-panel glass" }, [
     h("div", { class: "glass-header" }, [h("div", { class: "panel-heading" }, [h("div", { class: "icon-box icon-box-sm" }, h("i", { class: "fa-solid fa-list-check" })), h("div", {}, [h("div", { class: "panel-title" }, "Services & Procedures")])])]),
     h("div", { class: "glass-body" }, h("div", { style: { display: "flex", flexWrap: "wrap", gap: "8px" } },
-      doc.services.map((s) => h("span", { class: "badge badge-purple" }, h("i", { class: "fa-solid fa-check" }), ` ${s}`)))),
+      (doc.services || []).map((s) => h("span", { class: "badge badge-purple" }, h("i", { class: "fa-solid fa-check" }), ` ${s}`)))),
   ]);
 
   const reviewsSection = h("div", { class: "mn-panel glass" }, [
-    h("div", { class: "glass-header" }, [h("div", { class: "panel-heading" }, [h("div", { class: "icon-box icon-box-sm" }, h("i", { class: "fa-solid fa-star" })), h("div", {}, [h("div", { class: "panel-title" }, `Patient Reviews (${docReviews.length})`), h("div", { class: "panel-subtitle" }, `${doc.rating} average rating`)])])]),
+    h("div", { class: "glass-header" }, [      h("div", { class: "panel-heading" }, [h("div", { class: "icon-box icon-box-sm" }, h("i", { class: "fa-solid fa-star" })), h("div", {}, [h("div", { class: "panel-title" }, `Patient Reviews (${docReviews.length})`), h("div", { class: "panel-subtitle" }, `${doc.rating || 0} average rating`)])])]),
     h("div", { class: "glass-body", style: { padding: 0 } },
       docReviews.length ? docReviews.map((r) =>
         h("div", { style: { padding: "16px 20px", borderBottom: "1px solid var(--glass-border)" } }, [
           h("div", { style: { display: "flex", gap: "10px", alignItems: "center" } }, [
-            h("span", { class: "avatar avatar-sm" }, h("span", {}, r.userName.split(" ").map((p) => p[0]).slice(0, 2).join(""))),
+            h("span", { class: "avatar avatar-sm" }, h("span", {}, (r.userName || "").split(" ").map((p) => p[0]).slice(0, 2).join(""))),
             h("div", { style: { flex: 1 } }, [
               h("div", { style: { fontWeight: 600, fontSize: "14px" } }, r.userName),
               h("div", { style: { color: "var(--text-muted)", fontSize: "12px" } }, timeAgo(r.date)),
             ]),
             h("span", { class: "rating" }, h("i", { class: "fa-solid fa-star" }), h("span", { class: "rating-value" }, r.rating)),
           ]),
-          h("p", { style: { color: "var(--text-secondary)", fontSize: "14px", margin: "10px 0 0" } }, r.comment),
+          h("p", { style: { color: "var(--text-secondary)", fontSize: "14px", margin: "10px 0 0" } }, r.comment || ""),
         ])) :
       h("div", { style: { padding: "24px" } }, h("mn-empty", { icon: "star", title: "No reviews yet", text: "Be the first to review this doctor." })),
     ),
@@ -105,11 +104,11 @@ export async function view(ctx) {
             ]),
           ]),
           h("div", { style: { textAlign: "right" } }, [
-            h("div", { class: "rating", style: { justifyContent: "flex-end" } }, h("i", { class: "fa-solid fa-star" }), h("span", { class: "rating-value" }, doc.rating)),
-            h("div", { style: { color: "var(--text-muted)", fontSize: "12px" } }, `${doc.reviews} reviews`),
+            h("div", { class: "rating", style: { justifyContent: "flex-end" } }, h("i", { class: "fa-solid fa-star" }), h("span", { class: "rating-value" }, doc.rating || 0)),
+            h("div", { style: { color: "var(--text-muted)", fontSize: "12px" } }, `${doc.reviews || docReviews.length} reviews`),
           ]),
         ]),
-        h("p", { style: { color: "var(--text-secondary)", lineHeight: 1.7, marginTop: "16px" } }, doc.about),
+        h("p", { style: { color: "var(--text-secondary)", lineHeight: 1.7, marginTop: "16px" } }, doc.about || ""),
       ]),
       bookCta,
       h("div", { class: "span-full", style: { display: "grid", gap: "24px" } }, [availability, services, reviewsSection]),

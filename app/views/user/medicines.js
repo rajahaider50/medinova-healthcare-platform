@@ -4,36 +4,35 @@
 
 import { h } from "../../utils/html.js";
 import * as Store from "../../state/store.js";
-import { medicines } from "../../data/mock/medicines.js";
-import { categories } from "../../data/mock/categories.js";
+import * as Db from "../../data/db.js";
 import { money } from "../../utils/format.js";
 import * as Toast from "../../services/ToastService.js";
 import { CartService } from "../../services/CartService.js";
 import { debounce } from "../../utils/debounce.js";
 
 function medicineCard(m) {
-  const onSale = m.discount > 0;
+  const onSale = (m.discount || 0) > 0;
   return h("div", { class: "mn-panel glass glass-hover", style: { position: "relative" } }, [
-    onSale ? h("span", { class: "ribbon", style: { position: "absolute", top: 12, right: 12 } }, `${m.discount}% OFF`) : null,
+    onSale ? h("span", { class: "ribbon", style: { position: "absolute", top: 12, right: 12 } }, `${m.discount || 0}% OFF`) : null,
     h("a", { href: `#/medicine/${m.id}`, style: { textDecoration: "none", color: "inherit", display: "block" } }, [
       h("div", { style: { display: "flex", alignItems: "center", justifyContent: "center", height: "90px", background: "var(--bg-surface-2)", borderRadius: "var(--radius-md)", marginBottom: "12px" } },
         h("span", { class: "icon-box icon-box-lg" }, h("i", { class: "fa-solid fa-capsules" }))),
       h("div", { style: { fontWeight: 600, fontSize: "15px" } }, m.name),
       h("div", { style: { color: "var(--text-muted)", fontSize: "12px" } }, `${m.strength} · ${m.type}`),
       h("div", { style: { display: "flex", alignItems: "center", gap: "6px", margin: "6px 0" } }, [
-        h("span", { class: "rating" }, h("i", { class: "fa-solid fa-star" }), h("span", { class: "rating-count" }, m.rating)),
-        h("span", { style: { color: "var(--text-muted)", fontSize: "12px" } }, `(${m.sold} sold)`),
+        h("span", { class: "rating" }, h("i", { class: "fa-solid fa-star" }), h("span", { class: "rating-count" }, m.rating || 0)),
+        h("span", { style: { color: "var(--text-muted)", fontSize: "12px" } }, `(${m.sold || 0} sold)`),
       ]),
       h("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center" } }, [
         h("div", {}, [
           onSale ? h("span", { class: "price-strike", style: { textDecoration: "line-through", color: "var(--text-muted)", fontSize: "12px", marginRight: "6px" } }, money(m.price)) : null,
-          h("span", { class: "price", style: { fontWeight: 700, fontSize: "16px", color: "var(--color-primary)" } }, money(m.price - (m.price * m.discount) / 100)),
+          h("span", { class: "price", style: { fontWeight: 700, fontSize: "16px", color: "var(--color-primary)" } }, money(m.price - (m.price * (m.discount || 0)) / 100)),
         ]),
         h("button", {
           class: "btn btn-primary btn-sm",
           onclick: (e) => {
             e.preventDefault();
-            CartService.add({ medicineId: m.id, name: m.name, price: m.price - (m.price * m.discount) / 100, qty: 1, prescriptionRequired: m.prescriptionRequired });
+            CartService.add({ medicineId: m.id, name: m.name, price: m.price - (m.price * (m.discount || 0)) / 100, qty: 1, prescriptionRequired: m.prescriptionRequired });
             Toast.success("Added to cart", `${m.name} added to your cart.`);
           },
         }, h("i", { class: "fa-solid fa-cart-plus" }), " Add"),
@@ -47,6 +46,9 @@ function medicineCard(m) {
 export async function view() {
   const query = Store.get("route")?.query || {};
   const activeCat = query.category || "";
+
+  const medicines = Db.collection("medicines").all();
+  const categories = Db.collection("categories").all();
 
   const catChips = h("div", { class: "filter-bar", style: { display: "flex", gap: "8px", flexWrap: "wrap", margin: "16px 0" } }, [
     h("a", { class: ["chip", activeCat ? "" : "chip-filter"].join(" "), href: "#/medicines" }, "All"),
@@ -62,7 +64,7 @@ export async function view() {
     const q = (searchInput.value || "").trim().toLowerCase();
     const filtered = medicines.filter((m) => {
       const inCat = !activeCat || m.categoryId === activeCat;
-      const matches = !q || m.name.toLowerCase().includes(q) || m.generic.toLowerCase().includes(q) || m.keywords.some((k) => k.includes(q));
+      const matches = !q || (m.name || "").toLowerCase().includes(q) || (m.generic || "").toLowerCase().includes(q) || (m.keywords || []).some((k) => (k || "").includes(q));
       return inCat && matches;
     });
     grid.replaceChildren(

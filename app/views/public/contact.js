@@ -4,12 +4,12 @@
 
 import { h } from "../../utils/html.js";
 import * as Toast from "../../services/ToastService.js";
-import { platformSettings } from "../../data/mock/settings.js";
+import * as Brand from "../../services/BrandService.js";
 import { prosePage } from "./static.js";
 import { field, formData } from "../auth/shared.js";
 
 export async function view() {
-  const brand = platformSettings.brand;
+  const brand = Brand.getBrand();
   const form = h("form", { class: "form-grid", novalidate: "" }, [
     field({ label: "Your name", name: "name", placeholder: "Full name", icon: "user" }),
     field({ label: "Email", name: "email", type: "email", placeholder: "you@example.com", icon: "envelope" }),

@@ -3,13 +3,13 @@
  */
 
 import { h } from "../../utils/html.js";
-import { medicines } from "../../data/mock/medicines.js";
+import * as Db from "../../data/db.js";
 import { money } from "../../utils/format.js";
 import * as Toast from "../../services/ToastService.js";
 import { CartService } from "../../services/CartService.js";
 
 export async function view(ctx) {
-  const med = medicines.find((m) => m.id === ctx.params.id);
+  const med = Db.collection("medicines").findOne({ id: ctx.params.id });
 
   if (!med) {
     return h("div", { class: "error-state" }, [
@@ -25,7 +25,7 @@ export async function view(ctx) {
   ]) : null;
 
   const price = med.price - (med.price * (med.discount || 0)) / 100;
-  const onSale = med.discount > 0;
+  const onSale = (med.discount || 0) > 0;
 
   const addBtn = h("button", {
     class: "btn btn-primary btn-lg btn-block",
@@ -39,12 +39,12 @@ export async function view(ctx) {
     h("div", {}, [
       h("div", { style: { fontWeight: 700, fontSize: "26px", color: "var(--color-primary)" } },
         onSale ? [h("s", { style: { color: "var(--text-muted)", fontSize: "16px", marginRight: "8px" } }, money(med.price)), money(price)] : money(price)),
-      h("div", { style: { color: "var(--text-muted)", fontSize: "12px" } }, `incl. taxes · ${med.packSize} pack`),
+      h("div", { style: { color: "var(--text-muted)", fontSize: "12px" } }, `incl. taxes · ${med.packSize || ""} pack`),
     ]),
     h("div", { style: { marginTop: "12px", display: "flex", gap: "8px", flexWrap: "wrap" } }, [
-      med.stock > 0 ? h("span", { class: "badge badge-success" }, h("i", { class: "fa-solid fa-circle-check" }), " In stock") : h("span", { class: "badge badge-danger" }, " Out of stock"),
+      (med.stock || 0) > 0 ? h("span", { class: "badge badge-success" }, h("i", { class: "fa-solid fa-circle-check" }), " In stock") : h("span", { class: "badge badge-danger" }, " Out of stock"),
       med.prescriptionRequired ? h("span", { class: "badge badge-warning" }, " Prescription required") : null,
-      onSale ? h("span", { class: "badge badge-purple" }, `${med.discount}% off`) : null,
+      onSale ? h("span", { class: "badge badge-purple" }, `${med.discount || 0}% off`) : null,
     ]),
     h("div", { style: { marginTop: "16px" } }, addBtn),
     h("a", { class: "btn btn-outline btn-block", style: { marginTop: "10px" }, href: "#/cart" }, h("i", { class: "fa-solid fa-arrow-right" }), " View Cart"),
@@ -57,13 +57,13 @@ export async function view(ctx) {
       h("button", { class: "tab", "data-tab": "side" }, "Side Effects"),
     ]),
     h("div", { class: "tab-panel", style: { padding: "16px 0" } }, [
-      h("div", { "data-tab-panel": "uses" }, infoList("Uses", med.uses) || h("p", { style: { color: "var(--text-muted)" } }, "No usage info provided.")),
+      h("div", { "data-tab-panel": "uses" }, infoList("Uses", med.uses || []) || h("p", { style: { color: "var(--text-muted)" } }, "No usage info provided.")),
       h("div", { "data-tab-panel": "info", style: { display: "none" } }, [
-        infoList("Composition", med.composition ? [med.composition] : null),
+        infoList("Composition", (med.composition || "") ? [med.composition] : null),
         h("div", {}, [h("h3", { style: { fontSize: "15px", margin: "0 0 8px" } }, "Details"), h("p", { style: { color: "var(--text-secondary)", fontSize: "14px", lineHeight: 1.7 } }, med.description || "Please consult your pharmacist for complete information.")]),
-        h("div", { style: { marginTop: "12px" } }, infoList("Storage", [med.storage])),
+        h("div", { style: { marginTop: "12px" } }, infoList("Storage", [med.storage || ""])),
       ]),
-      h("div", { "data-tab-panel": "side", style: { display: "none" } }, infoList("Possible side effects", med.sideEffects) || h("p", { style: { color: "var(--text-muted)" } }, "No major side effects reported.")),
+      h("div", { "data-tab-panel": "side", style: { display: "none" } }, infoList("Possible side effects", med.sideEffects || []) || h("p", { style: { color: "var(--text-muted)" } }, "No major side effects reported.")),
     ]),
   ]);
 
@@ -82,10 +82,10 @@ export async function view(ctx) {
           h("div", { class: "icon-box icon-box-lg", style: { width: 90, height: 90, borderRadius: "var(--radius-lg)" } }, h("i", { class: "fa-solid fa-capsules", style: { fontSize: "34px" } })),
           h("div", { style: { flex: 1, minWidth: 220 } }, [
             h("h1", { style: { margin: 0, fontSize: "24px" } }, med.name),
-            h("p", { style: { color: "var(--text-muted)", margin: "4px 0" } }, `${med.generic} · ${med.strength} · ${med.type}`),
+            h("p", { style: { color: "var(--text-muted)", margin: "4px 0" } }, `${med.generic || ""} · ${med.strength} · ${med.type}`),
             h("div", { style: { display: "flex", gap: "8px", flexWrap: "wrap" } }, [
-              h("span", { class: "badge badge-neutral" }, med.brand),
-              h("span", { class: "badge badge-neutral" }, med.manufacturer),
+              h("span", { class: "badge badge-neutral" }, med.brand || ""),
+              h("span", { class: "badge badge-neutral" }, med.manufacturer || ""),
             ]),
           ]),
         ]),

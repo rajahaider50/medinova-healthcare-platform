@@ -11,6 +11,7 @@ import * as ErrorManager from "./errors/ErrorManager.js";
 import * as ErrorStore from "./errors/ErrorStore.js";
 import * as Toast from "./services/ToastService.js";
 import { ThemeService } from "./services/ThemeService.js";
+import { applyBrand } from "./services/BrandService.js";
 import { seedDatabase, needsSeeding } from "./data/seed.js";
 import { registerLayouts } from "./layouts/index.js";
 import { registerAuthRoutes } from "./routes/auth.routes.js";
@@ -64,6 +65,7 @@ function initSession() {
 async function start() {
   initErrorSystem();
   ThemeService.init();
+  applyBrand();
 
   if (needsSeeding()) {
     try {

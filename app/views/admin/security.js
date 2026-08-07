@@ -1,14 +1,16 @@
 /**
  * MediNova — View: Admin security.
+ * Editable security policies persisted via BrandService.
  */
 
 import { h } from "../../utils/html.js";
-import { platformSettings } from "../../data/mock/settings.js";
+import * as Brand from "../../services/BrandService.js";
 import * as Toast from "../../services/ToastService.js";
 import * as Store from "../../errors/ErrorStore.js";
+import { currentUser } from "../../services/AuthService.js";
 
 export async function view() {
-  const sec = platformSettings.security;
+  const sec = Brand.getSettings().security;
 
   function settingRow(label, sub, control) {
     return h("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", gap: "16px", padding: "14px 0", borderBottom: "1px solid var(--glass-border)" } }, [
@@ -17,14 +19,20 @@ export async function view() {
     ]);
   }
 
-  const verifySwitch = h("mn-switch", { label: "Email verification", checked: sec.requireEmailVerification ? "checked" : null });
-  const twoFaSwitch = h("mn-switch", { label: "Two-factor auth", checked: sec.enable2fa ? "checked" : null });
+  function mkSwitch(label, on) {
+    const sw = h("mn-switch", { label });
+    if (on) sw.setAttribute("checked", "");
+    return sw;
+  }
+
+  const verifySwitch = mkSwitch("Email verification", !!sec.requireEmailVerification);
+  const twoFaSwitch = mkSwitch("Two-factor auth", !!sec.enable2fa);
   const sessionRow = h("div", { style: { display: "flex", alignItems: "center", gap: "10px" } }, [
-    h("input", { class: "input", type: "number", value: String(sec.sessionTimeoutMin), style: { width: "90px" } }),
+    h("input", { class: "input", type: "number", id: "sec-session-timeout", value: String(sec.sessionTimeoutMin), style: { width: "90px" } }),
     h("span", { style: { color: "var(--text-muted)", fontSize: "12px" } }, "minutes"),
   ]);
   const attemptsRow = h("div", { style: { display: "flex", alignItems: "center", gap: "10px" } }, [
-    h("input", { class: "input", type: "number", value: String(sec.maxLoginAttempts), style: { width: "90px" } }),
+    h("input", { class: "input", type: "number", id: "sec-max-attempts", value: String(sec.maxLoginAttempts), style: { width: "90px" } }),
     h("span", { style: { color: "var(--text-muted)", fontSize: "12px" } }, "attempts"),
   ]);
 
@@ -35,7 +43,24 @@ export async function view() {
       settingRow("Session timeout", "Auto sign-out after inactivity", sessionRow),
       settingRow("Max login attempts", "Lock after repeated failed logins", attemptsRow),
       settingRow("Two-factor authentication", "Extra layer for admin accounts", twoFaSwitch),
-      h("div", { style: { marginTop: "16px" } }, h("button", { class: "btn btn-primary", onclick: () => Toast.success("Saved", "Security settings updated (demo).") }, h("i", { class: "fa-solid fa-check" }), " Save Changes")),
+      h("div", { style: { marginTop: "16px" } }, h("button", {
+        class: "btn btn-primary",
+        onclick: () => {
+          try {
+            Brand.saveSettings({
+              security: {
+                requireEmailVerification: verifySwitch.hasAttribute("checked"),
+                sessionTimeoutMin: Number(sessionRow.querySelector("input").value) || 60,
+                maxLoginAttempts: Number(attemptsRow.querySelector("input").value) || 5,
+                enable2fa: twoFaSwitch.hasAttribute("checked"),
+              },
+            }, currentUser()?.id);
+            Toast.success("Saved", "Security settings updated across the app.");
+          } catch (err) {
+            Toast.error("Save failed", err.message || "Please try again.");
+          }
+        },
+      }, h("i", { class: "fa-solid fa-check" }), " Save Changes")),
     ]),
   ]);
 

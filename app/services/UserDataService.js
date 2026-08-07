@@ -7,7 +7,7 @@ import * as Db from "../data/db.js";
 import { currentUser } from "./AuthService.js";
 
 export function myId() {
-  return currentUser()?.id || "u-1001";
+  return currentUser()?.id || "";
 }
 
 export function myAppointments() {

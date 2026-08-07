@@ -4,12 +4,12 @@
 
 import { h } from "../../utils/html.js";
 import UserData from "../../services/UserDataService.js";
-import { recordTypes } from "../../data/mock/records.js";
+import { RECORD_TYPES } from "../../config/constants.js";
 import { formatDate } from "../../utils/date.js";
 import * as Toast from "../../services/ToastService.js";
 
 function typeInfo(type) {
-  return recordTypes.find((t) => t.id === type) || { label: type, icon: "fa-folder" };
+  return RECORD_TYPES.find((t) => t.id === type) || { label: type, icon: "fa-folder" };
 }
 
 export async function view() {
@@ -17,7 +17,7 @@ export async function view() {
 
   const chips = h("div", { class: "filter-bar", style: { display: "flex", gap: "8px", flexWrap: "wrap", margin: "16px 0" } }, [
     h("button", { class: "chip chip-filter", onclick: () => { filter.setAttribute("data-type", ""); render(); } }, "All"),
-    ...recordTypes.map((t) =>
+    ...RECORD_TYPES.map((t) =>
       h("button", { class: "chip", onclick: () => { filter.setAttribute("data-type", t.id); render(); } }, h("i", { class: `fa-solid ${t.icon}` }), ` ${t.label}`)),
   ]);
 

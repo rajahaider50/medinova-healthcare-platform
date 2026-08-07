@@ -9,6 +9,7 @@ import * as Store from "../state/store.js";
 import { currentUser, logout, ROLE_LABELS } from "../services/AuthService.js";
 import { ThemeService } from "../services/ThemeService.js";
 import { APP_NAME } from "../config/app.config.js";
+import * as Ui from "../services/UiService.js";
 
 /** Build the top header element. */
 export function buildHeader(opts = {}) {
@@ -19,11 +20,12 @@ export function buildHeader(opts = {}) {
   const cartCount = Store.get("cartCount") || 0;
   const errors = Store.get("errors") || 0;
 
-  const menuBtn = opts.menu ? h("button", {
+  const menuBtn = h("button", {
     class: "header-btn sidebar-collapse-btn",
-    "aria-label": "Toggle sidebar",
-    onclick: () => Store.set("sidebarCollapsed", !Store.get("sidebarCollapsed")),
-  }, h("i", { class: "fa-solid fa-bars" })) : null;
+    "aria-label": "Toggle navigation",
+    title: Ui.isMobile() ? "Open menu" : "Collapse sidebar",
+    onclick: (e) => Ui.handleMenuClick(e),
+  }, h("i", { class: "fa-solid fa-bars" }));
 
   const search = h("div", { class: "header-search" }, [
     h("i", { class: "fa-solid fa-magnifying-glass" }),

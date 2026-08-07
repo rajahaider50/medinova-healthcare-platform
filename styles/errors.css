@@ -263,6 +263,16 @@
 .ec-row .ec-id { color: #a78bfa; }
 .ec-row .ec-time { color: var(--text-muted); }
 .ec-row .ec-file { color: var(--cyan); }
+.ec-row .btn-icon {
+  opacity: 0;
+  color: var(--text-muted);
+}
+.ec-row:hover .btn-icon,
+.ec-row.selected .btn-icon,
+.ec-row .btn-icon:focus-visible {
+  opacity: 1;
+}
+.ec-row .btn-icon:hover { color: var(--text-primary); background: var(--bg-hover); }
 
 /* Error detail drawer */
 .ec-detail {

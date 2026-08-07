@@ -259,15 +259,53 @@
   position: fixed;
   inset: 0;
   background: var(--bg-scrim);
-  z-index: var(--z-sidebar);
+  z-index: calc(var(--z-sidebar) - 1);
   backdrop-filter: blur(3px);
   animation: mn-fade-in var(--t-fast) both;
 }
 @media (max-width: 960px) {
   .sidebar {
     transform: translateX(-100%);
+    box-shadow: none;
   }
   .sidebar.mobile-open {
     transform: translateX(0);
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.25);
+  }
+  .sidebar.collapsed {
+    width: var(--sidebar-width);
+  }
+  .sidebar.collapsed .brand-text,
+  .sidebar.collapsed .brand-tag,
+  .sidebar.collapsed .sb-label,
+  .sidebar.collapsed .sb-badge,
+  .sidebar.collapsed .sb-chev,
+  .sidebar.collapsed .sidebar-section-label,
+  .sidebar.collapsed .sidebar-search .input {
+    display: block;
+  }
+  .sidebar.collapsed .sidebar-link {
+    justify-content: flex-start;
+    padding: 10px var(--space-3);
+  }
+  .sidebar.collapsed .sidebar-link.active::before { display: block; }
+  .sidebar.collapsed .sidebar-brand {
+    justify-content: flex-start;
+    padding: var(--space-5) var(--space-4);
+  }
+  .sidebar.collapsed .sidebar-section-label {
+    text-align: left;
+    padding: var(--space-4) var(--space-3) var(--space-2);
+  }
+  .sidebar.collapsed .sidebar-section-label::after { content: none; }
+  .sidebar.collapsed .su-info,
+  .sidebar.collapsed .su-chev {
+    display: block;
+  }
+  .sidebar.collapsed .sidebar-user { justify-content: flex-start; }
+  .sidebar.collapsed .sidebar-collapse-btn { justify-content: flex-start; }
+  .sidebar.collapsed .sidebar-collapse-btn .sb-label { display: block; }
+  .app-main {
+    margin-left: 0;
   }
 }

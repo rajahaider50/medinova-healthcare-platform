@@ -6,7 +6,7 @@ import { h } from "../../utils/html.js";
 import * as Db from "../../data/db.js";
 import * as Toast from "../../services/ToastService.js";
 import { currentUser } from "../../services/AuthService.js";
-import { tickets, faqs, ticketCategories } from "../../data/mock/tickets.js";
+import { TICKET_CATEGORIES } from "../../config/constants.js";
 import { uid } from "../../utils/id.js";
 import { timeAgo } from "../../utils/date.js";
 
@@ -14,11 +14,12 @@ const TONE = { open: "warning", pending: "info", "in-progress": "purple", resolv
 
 export async function view() {
   const user = currentUser();
-  const myTickets = tickets.filter((t) => t.userId === user.id);
+  const myTickets = Db.collection("tickets").find({ userId: user.id });
+  const faqs = Db.collection("faqs").all();
 
   const subjectInput = h("input", { class: "input", id: "tkt-subject", placeholder: "Subject", style: { marginBottom: "10px" } });
   const categorySelect = h("select", { class: "select", id: "tkt-category", style: { marginBottom: "10px" } },
-    ticketCategories.map((c) => h("option", { value: c }, c)));
+    TICKET_CATEGORIES.map((c) => h("option", { value: c }, c)));
   const msgInput = h("textarea", { class: "textarea", id: "tkt-msg", rows: 3, placeholder: "Describe your issue...", style: { marginBottom: "10px" } });
 
   const ticketsPanel = h("div", { class: "mn-panel glass" }, [

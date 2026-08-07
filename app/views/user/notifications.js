@@ -6,7 +6,7 @@ import { h } from "../../utils/html.js";
 import * as Db from "../../data/db.js";
 import * as Store from "../../state/store.js";
 import UserData from "../../services/UserDataService.js";
-import { notificationTypes } from "../../data/mock/notifications.js";
+import { NOTIFICATION_TYPES } from "../../config/constants.js";
 import { timeAgo } from "../../utils/date.js";
 import * as Toast from "../../services/ToastService.js";
 
@@ -14,7 +14,7 @@ export async function view() {
   const notifications = UserData.myNotifications();
 
   function iconFor(type) {
-    return notificationTypes.find((t) => t.id === type)?.icon || "fa-bell";
+    return NOTIFICATION_TYPES.find((t) => t.id === type)?.icon || "fa-bell";
   }
 
   const list = h("div", { class: "mn-panel glass" });

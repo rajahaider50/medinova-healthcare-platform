@@ -9,6 +9,7 @@ import { adminLayout, initAdminLayout } from "./admin-layout.js";
 import { authLayout } from "./auth-layout.js";
 import { publicLayout } from "./public-layout.js";
 import { initSidebarSync } from "./sidebar.js";
+import * as Ui from "../services/UiService.js";
 
 /** Register all layouts. Call before Router.init(). */
 export function registerLayouts() {
@@ -20,6 +21,7 @@ export function registerLayouts() {
   });
   initSidebarSync();
   initAdminLayout();
+  Ui.initUi();
 }
 
 export default { registerLayouts };

@@ -4,7 +4,7 @@
  * Isolated mock auth — swap-ready for a real backend.
  */
 
-import { STORAGE_KEYS, DEMO_ACCOUNTS, IS_DEV } from "../config/app.config.js";
+import { STORAGE_KEYS, IS_DEV } from "../config/app.config.js";
 import * as Storage from "./StorageService.js";
 import * as Db from "../data/db.js";
 import * as Log from "./LogService.js";
@@ -90,27 +90,11 @@ export function createSession(user, remember = true) {
   return s;
 }
 
-/** Login by email + password (demo users always work; local users hashed). */
+/** Login by email + password (real accounts only). */
 export function login(email, password) {
   const norm = String(email || "").trim().toLowerCase();
-
-  // Demo accounts are guaranteed to work (clearly documented mock credentials).
-  const demo = Object.values(DEMO_ACCOUNTS).find((a) => a.email === norm);
-  if (demo) {
-    if (demo.password !== password) {
-      throw createAppError("Invalid credentials", { type: "auth", auth: true, code: 401 });
-    }
-    const role = demo === DEMO_ACCOUNTS.admin ? ROLES.ADMIN : demo === DEMO_ACCOUNTS.doctor ? ROLES.DOCTOR : ROLES.USER;
-    let user = Db.collection("users").findOne({ email: norm });
-    if (!user) {
-      user = Db.collection("users").insert({
-        id: uid("u"), name: demo.name, email: norm, role,
-        password: hash(password), status: "active", phone: "", createdAt: new Date().toISOString(),
-      });
-    }
-    const s = createSession(user);
-    Log.login(user.name, { actorId: user.id, role: user.role });
-    return { user, session: s };
+  if (!norm || !password) {
+    throw createAppError("Enter your email and password", { type: "validation", validation: true });
   }
 
   // Local registered users

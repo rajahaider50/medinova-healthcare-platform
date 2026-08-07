@@ -1,0 +1,1821 @@
+{
+  "count": 255,
+  "note": "MediNova icon library — 24x24 stroke icons. Use inline with stroke=\"currentColor\".",
+  "categories": {
+    "navigation": [
+      "home",
+      "dashboard",
+      "menu",
+      "menu-grid",
+      "chevron-left",
+      "chevron-right",
+      "chevron-up",
+      "chevron-down",
+      "arrow-left",
+      "arrow-right",
+      "arrow-up",
+      "arrow-down",
+      "arrow-up-right",
+      "close",
+      "plus",
+      "minus",
+      "more-horizontal",
+      "more-vertical",
+      "back",
+      "forward"
+    ],
+    "health": [
+      "plus-cross",
+      "heart-pulse",
+      "stethoscope",
+      "syringe",
+      "first-aid",
+      "pill",
+      "capsule",
+      "dna",
+      "heartbeat",
+      "bone",
+      "brain",
+      "eye-check",
+      "teeth",
+      "baby",
+      "wheelchair",
+      "x-ray",
+      "scan",
+      "virus",
+      "blood-drop",
+      "temperature",
+      "bandage",
+      "clipboard-pulse",
+      "shield-cross",
+      "star-of-life"
+    ],
+    "doctors": [
+      "doctor",
+      "user",
+      "user-plus",
+      "user-minus",
+      "users",
+      "user-doctor",
+      "user-nurse",
+      "avatar",
+      "patient",
+      "gender",
+      "id-badge",
+      "user-check"
+    ],
+    "files": [
+      "edit",
+      "pen",
+      "trash",
+      "file",
+      "file-text",
+      "file-plus",
+      "file-check",
+      "file-search",
+      "folder",
+      "folder-open",
+      "clipboard",
+      "clipboard-check",
+      "clipboard-list",
+      "notes",
+      "document",
+      "archive",
+      "list",
+      "list-check",
+      "receipt",
+      "download",
+      "upload",
+      "save",
+      "print",
+      "share",
+      "link",
+      "copy"
+    ],
+    "status": [
+      "alert",
+      "info",
+      "check-circle",
+      "xmark-circle",
+      "info-circle",
+      "alert-triangle",
+      "alert-circle",
+      "help-circle",
+      "question",
+      "exclamation",
+      "warning",
+      "success-check",
+      "ban-circle"
+    ],
+    "pharmacy": [
+      "pills",
+      "medicine-bottle",
+      "mortar-pestle",
+      "prescription",
+      "rx",
+      "pharmacy-cross",
+      "shopping-bag",
+      "cart",
+      "cart-plus",
+      "truck",
+      "package",
+      "box-open",
+      "warehouse",
+      "shelf",
+      "barcode",
+      "tags",
+      "tag",
+      "coupon",
+      "discount"
+    ],
+    "calendar": [
+      "calendar",
+      "calendar-plus",
+      "calendar-check",
+      "calendar-xmark",
+      "calendar-clock",
+      "clock",
+      "hourglass",
+      "alarm",
+      "timer",
+      "schedule",
+      "location-pin",
+      "map-pin",
+      "compass",
+      "navigation"
+    ],
+    "payments": [
+      "credit-card",
+      "wallet",
+      "bank",
+      "money",
+      "cash",
+      "receipt-check",
+      "payment",
+      "invoice",
+      "coin",
+      "percent",
+      "banknote"
+    ],
+    "messages": [
+      "mail",
+      "mail-open",
+      "send",
+      "chat",
+      "chat-bubble",
+      "message-circle",
+      "bell",
+      "bell-ring",
+      "bell-slash",
+      "notification",
+      "comment"
+    ],
+    "search": [
+      "search",
+      "filter",
+      "filter-sliders",
+      "sliders",
+      "sort",
+      "sort-desc",
+      "sort-asc",
+      "eye",
+      "eye-off",
+      "scan-search"
+    ],
+    "security": [
+      "lock",
+      "lock-open",
+      "unlock",
+      "shield",
+      "shield-check",
+      "shield-xmark",
+      "shield-halved",
+      "key",
+      "fingerprint",
+      "user-shield",
+      "ban",
+      "alert-octagon",
+      "password"
+    ],
+    "system": [
+      "settings",
+      "gear",
+      "cog",
+      "sliders-horizontal",
+      "tools",
+      "wrench",
+      "server",
+      "database",
+      "cpu",
+      "hard-drive",
+      "terminal",
+      "code",
+      "bug",
+      "refresh",
+      "refresh-cw",
+      "spinner",
+      "cloud",
+      "cloud-off",
+      "wifi",
+      "wifi-off",
+      "plug",
+      "power",
+      "toggle-on",
+      "toggle-off",
+      "layers",
+      "globe",
+      "globe-check"
+    ],
+    "admin": [
+      "chart-line",
+      "chart-bar",
+      "chart-pie",
+      "chart-area",
+      "trending-up",
+      "trending-down",
+      "analytics",
+      "gauge",
+      "activity",
+      "target",
+      "grid",
+      "layout",
+      "newspaper",
+      "monitor",
+      "building",
+      "hospital",
+      "clinic",
+      "sign-in",
+      "sign-out",
+      "external-link",
+      "bookmark",
+      "star",
+      "star-half",
+      "heart",
+      "thumbs-up",
+      "flag",
+      "gift",
+      "tag-percent"
+    ],
+    "misc": [
+      "phone",
+      "smartphone",
+      "tablet",
+      "laptop",
+      "camera",
+      "image",
+      "video",
+      "video-slash",
+      "play",
+      "pause",
+      "microphone",
+      "volume",
+      "headset",
+      "language",
+      "translate",
+      "moon",
+      "sun",
+      "sparkles",
+      "palette",
+      "brush",
+      "paint-roller",
+      "anchor",
+      "fire",
+      "lightbulb",
+      "rocket",
+      "robot",
+      "calendar-sync"
+    ]
+  },
+  "icons": [
+    {
+      "name": "home",
+      "file": "SVG/home.svg",
+      "html": "HTML/home.html",
+      "category": "navigation"
+    },
+    {
+      "name": "dashboard",
+      "file": "SVG/dashboard.svg",
+      "html": "HTML/dashboard.html",
+      "category": "navigation"
+    },
+    {
+      "name": "menu",
+      "file": "SVG/menu.svg",
+      "html": "HTML/menu.html",
+      "category": "navigation"
+    },
+    {
+      "name": "menu-grid",
+      "file": "SVG/menu-grid.svg",
+      "html": "HTML/menu-grid.html",
+      "category": "navigation"
+    },
+    {
+      "name": "chevron-left",
+      "file": "SVG/chevron-left.svg",
+      "html": "HTML/chevron-left.html",
+      "category": "navigation"
+    },
+    {
+      "name": "chevron-right",
+      "file": "SVG/chevron-right.svg",
+      "html": "HTML/chevron-right.html",
+      "category": "navigation"
+    },
+    {
+      "name": "chevron-up",
+      "file": "SVG/chevron-up.svg",
+      "html": "HTML/chevron-up.html",
+      "category": "navigation"
+    },
+    {
+      "name": "chevron-down",
+      "file": "SVG/chevron-down.svg",
+      "html": "HTML/chevron-down.html",
+      "category": "navigation"
+    },
+    {
+      "name": "arrow-left",
+      "file": "SVG/arrow-left.svg",
+      "html": "HTML/arrow-left.html",
+      "category": "navigation"
+    },
+    {
+      "name": "arrow-right",
+      "file": "SVG/arrow-right.svg",
+      "html": "HTML/arrow-right.html",
+      "category": "navigation"
+    },
+    {
+      "name": "arrow-up",
+      "file": "SVG/arrow-up.svg",
+      "html": "HTML/arrow-up.html",
+      "category": "navigation"
+    },
+    {
+      "name": "arrow-down",
+      "file": "SVG/arrow-down.svg",
+      "html": "HTML/arrow-down.html",
+      "category": "navigation"
+    },
+    {
+      "name": "arrow-up-right",
+      "file": "SVG/arrow-up-right.svg",
+      "html": "HTML/arrow-up-right.html",
+      "category": "navigation"
+    },
+    {
+      "name": "close",
+      "file": "SVG/close.svg",
+      "html": "HTML/close.html",
+      "category": "navigation"
+    },
+    {
+      "name": "plus",
+      "file": "SVG/plus.svg",
+      "html": "HTML/plus.html",
+      "category": "navigation"
+    },
+    {
+      "name": "minus",
+      "file": "SVG/minus.svg",
+      "html": "HTML/minus.html",
+      "category": "navigation"
+    },
+    {
+      "name": "more-horizontal",
+      "file": "SVG/more-horizontal.svg",
+      "html": "HTML/more-horizontal.html",
+      "category": "navigation"
+    },
+    {
+      "name": "more-vertical",
+      "file": "SVG/more-vertical.svg",
+      "html": "HTML/more-vertical.html",
+      "category": "navigation"
+    },
+    {
+      "name": "back",
+      "file": "SVG/back.svg",
+      "html": "HTML/back.html",
+      "category": "navigation"
+    },
+    {
+      "name": "forward",
+      "file": "SVG/forward.svg",
+      "html": "HTML/forward.html",
+      "category": "navigation"
+    },
+    {
+      "name": "plus-cross",
+      "file": "SVG/plus-cross.svg",
+      "html": "HTML/plus-cross.html",
+      "category": "health"
+    },
+    {
+      "name": "heart-pulse",
+      "file": "SVG/heart-pulse.svg",
+      "html": "HTML/heart-pulse.html",
+      "category": "health"
+    },
+    {
+      "name": "stethoscope",
+      "file": "SVG/stethoscope.svg",
+      "html": "HTML/stethoscope.html",
+      "category": "health"
+    },
+    {
+      "name": "syringe",
+      "file": "SVG/syringe.svg",
+      "html": "HTML/syringe.html",
+      "category": "health"
+    },
+    {
+      "name": "first-aid",
+      "file": "SVG/first-aid.svg",
+      "html": "HTML/first-aid.html",
+      "category": "health"
+    },
+    {
+      "name": "pill",
+      "file": "SVG/pill.svg",
+      "html": "HTML/pill.html",
+      "category": "health"
+    },
+    {
+      "name": "capsule",
+      "file": "SVG/capsule.svg",
+      "html": "HTML/capsule.html",
+      "category": "health"
+    },
+    {
+      "name": "dna",
+      "file": "SVG/dna.svg",
+      "html": "HTML/dna.html",
+      "category": "health"
+    },
+    {
+      "name": "heartbeat",
+      "file": "SVG/heartbeat.svg",
+      "html": "HTML/heartbeat.html",
+      "category": "health"
+    },
+    {
+      "name": "bone",
+      "file": "SVG/bone.svg",
+      "html": "HTML/bone.html",
+      "category": "health"
+    },
+    {
+      "name": "brain",
+      "file": "SVG/brain.svg",
+      "html": "HTML/brain.html",
+      "category": "health"
+    },
+    {
+      "name": "eye-check",
+      "file": "SVG/eye-check.svg",
+      "html": "HTML/eye-check.html",
+      "category": "health"
+    },
+    {
+      "name": "teeth",
+      "file": "SVG/teeth.svg",
+      "html": "HTML/teeth.html",
+      "category": "health"
+    },
+    {
+      "name": "baby",
+      "file": "SVG/baby.svg",
+      "html": "HTML/baby.html",
+      "category": "health"
+    },
+    {
+      "name": "wheelchair",
+      "file": "SVG/wheelchair.svg",
+      "html": "HTML/wheelchair.html",
+      "category": "health"
+    },
+    {
+      "name": "x-ray",
+      "file": "SVG/x-ray.svg",
+      "html": "HTML/x-ray.html",
+      "category": "health"
+    },
+    {
+      "name": "scan",
+      "file": "SVG/scan.svg",
+      "html": "HTML/scan.html",
+      "category": "health"
+    },
+    {
+      "name": "virus",
+      "file": "SVG/virus.svg",
+      "html": "HTML/virus.html",
+      "category": "health"
+    },
+    {
+      "name": "blood-drop",
+      "file": "SVG/blood-drop.svg",
+      "html": "HTML/blood-drop.html",
+      "category": "health"
+    },
+    {
+      "name": "temperature",
+      "file": "SVG/temperature.svg",
+      "html": "HTML/temperature.html",
+      "category": "health"
+    },
+    {
+      "name": "bandage",
+      "file": "SVG/bandage.svg",
+      "html": "HTML/bandage.html",
+      "category": "health"
+    },
+    {
+      "name": "clipboard-pulse",
+      "file": "SVG/clipboard-pulse.svg",
+      "html": "HTML/clipboard-pulse.html",
+      "category": "health"
+    },
+    {
+      "name": "shield-cross",
+      "file": "SVG/shield-cross.svg",
+      "html": "HTML/shield-cross.html",
+      "category": "health"
+    },
+    {
+      "name": "star-of-life",
+      "file": "SVG/star-of-life.svg",
+      "html": "HTML/star-of-life.html",
+      "category": "health"
+    },
+    {
+      "name": "doctor",
+      "file": "SVG/doctor.svg",
+      "html": "HTML/doctor.html",
+      "category": "doctors"
+    },
+    {
+      "name": "user",
+      "file": "SVG/user.svg",
+      "html": "HTML/user.html",
+      "category": "doctors"
+    },
+    {
+      "name": "user-plus",
+      "file": "SVG/user-plus.svg",
+      "html": "HTML/user-plus.html",
+      "category": "doctors"
+    },
+    {
+      "name": "user-minus",
+      "file": "SVG/user-minus.svg",
+      "html": "HTML/user-minus.html",
+      "category": "doctors"
+    },
+    {
+      "name": "users",
+      "file": "SVG/users.svg",
+      "html": "HTML/users.html",
+      "category": "doctors"
+    },
+    {
+      "name": "user-doctor",
+      "file": "SVG/user-doctor.svg",
+      "html": "HTML/user-doctor.html",
+      "category": "doctors"
+    },
+    {
+      "name": "user-nurse",
+      "file": "SVG/user-nurse.svg",
+      "html": "HTML/user-nurse.html",
+      "category": "doctors"
+    },
+    {
+      "name": "avatar",
+      "file": "SVG/avatar.svg",
+      "html": "HTML/avatar.html",
+      "category": "doctors"
+    },
+    {
+      "name": "patient",
+      "file": "SVG/patient.svg",
+      "html": "HTML/patient.html",
+      "category": "doctors"
+    },
+    {
+      "name": "gender",
+      "file": "SVG/gender.svg",
+      "html": "HTML/gender.html",
+      "category": "doctors"
+    },
+    {
+      "name": "id-badge",
+      "file": "SVG/id-badge.svg",
+      "html": "HTML/id-badge.html",
+      "category": "doctors"
+    },
+    {
+      "name": "user-check",
+      "file": "SVG/user-check.svg",
+      "html": "HTML/user-check.html",
+      "category": "doctors"
+    },
+    {
+      "name": "edit",
+      "file": "SVG/edit.svg",
+      "html": "HTML/edit.html",
+      "category": "files"
+    },
+    {
+      "name": "pen",
+      "file": "SVG/pen.svg",
+      "html": "HTML/pen.html",
+      "category": "files"
+    },
+    {
+      "name": "trash",
+      "file": "SVG/trash.svg",
+      "html": "HTML/trash.html",
+      "category": "files"
+    },
+    {
+      "name": "alert",
+      "file": "SVG/alert.svg",
+      "html": "HTML/alert.html",
+      "category": "status"
+    },
+    {
+      "name": "info",
+      "file": "SVG/info.svg",
+      "html": "HTML/info.html",
+      "category": "status"
+    },
+    {
+      "name": "pills",
+      "file": "SVG/pills.svg",
+      "html": "HTML/pills.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "medicine-bottle",
+      "file": "SVG/medicine-bottle.svg",
+      "html": "HTML/medicine-bottle.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "mortar-pestle",
+      "file": "SVG/mortar-pestle.svg",
+      "html": "HTML/mortar-pestle.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "prescription",
+      "file": "SVG/prescription.svg",
+      "html": "HTML/prescription.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "rx",
+      "file": "SVG/rx.svg",
+      "html": "HTML/rx.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "pharmacy-cross",
+      "file": "SVG/pharmacy-cross.svg",
+      "html": "HTML/pharmacy-cross.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "shopping-bag",
+      "file": "SVG/shopping-bag.svg",
+      "html": "HTML/shopping-bag.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "cart",
+      "file": "SVG/cart.svg",
+      "html": "HTML/cart.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "cart-plus",
+      "file": "SVG/cart-plus.svg",
+      "html": "HTML/cart-plus.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "truck",
+      "file": "SVG/truck.svg",
+      "html": "HTML/truck.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "package",
+      "file": "SVG/package.svg",
+      "html": "HTML/package.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "box-open",
+      "file": "SVG/box-open.svg",
+      "html": "HTML/box-open.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "warehouse",
+      "file": "SVG/warehouse.svg",
+      "html": "HTML/warehouse.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "shelf",
+      "file": "SVG/shelf.svg",
+      "html": "HTML/shelf.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "barcode",
+      "file": "SVG/barcode.svg",
+      "html": "HTML/barcode.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "tags",
+      "file": "SVG/tags.svg",
+      "html": "HTML/tags.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "tag",
+      "file": "SVG/tag.svg",
+      "html": "HTML/tag.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "coupon",
+      "file": "SVG/coupon.svg",
+      "html": "HTML/coupon.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "discount",
+      "file": "SVG/discount.svg",
+      "html": "HTML/discount.html",
+      "category": "pharmacy"
+    },
+    {
+      "name": "calendar",
+      "file": "SVG/calendar.svg",
+      "html": "HTML/calendar.html",
+      "category": "calendar"
+    },
+    {
+      "name": "calendar-plus",
+      "file": "SVG/calendar-plus.svg",
+      "html": "HTML/calendar-plus.html",
+      "category": "calendar"
+    },
+    {
+      "name": "calendar-check",
+      "file": "SVG/calendar-check.svg",
+      "html": "HTML/calendar-check.html",
+      "category": "calendar"
+    },
+    {
+      "name": "calendar-xmark",
+      "file": "SVG/calendar-xmark.svg",
+      "html": "HTML/calendar-xmark.html",
+      "category": "calendar"
+    },
+    {
+      "name": "calendar-clock",
+      "file": "SVG/calendar-clock.svg",
+      "html": "HTML/calendar-clock.html",
+      "category": "calendar"
+    },
+    {
+      "name": "clock",
+      "file": "SVG/clock.svg",
+      "html": "HTML/clock.html",
+      "category": "calendar"
+    },
+    {
+      "name": "hourglass",
+      "file": "SVG/hourglass.svg",
+      "html": "HTML/hourglass.html",
+      "category": "calendar"
+    },
+    {
+      "name": "alarm",
+      "file": "SVG/alarm.svg",
+      "html": "HTML/alarm.html",
+      "category": "calendar"
+    },
+    {
+      "name": "timer",
+      "file": "SVG/timer.svg",
+      "html": "HTML/timer.html",
+      "category": "calendar"
+    },
+    {
+      "name": "schedule",
+      "file": "SVG/schedule.svg",
+      "html": "HTML/schedule.html",
+      "category": "calendar"
+    },
+    {
+      "name": "location-pin",
+      "file": "SVG/location-pin.svg",
+      "html": "HTML/location-pin.html",
+      "category": "calendar"
+    },
+    {
+      "name": "map-pin",
+      "file": "SVG/map-pin.svg",
+      "html": "HTML/map-pin.html",
+      "category": "calendar"
+    },
+    {
+      "name": "compass",
+      "file": "SVG/compass.svg",
+      "html": "HTML/compass.html",
+      "category": "calendar"
+    },
+    {
+      "name": "navigation",
+      "file": "SVG/navigation.svg",
+      "html": "HTML/navigation.html",
+      "category": "calendar"
+    },
+    {
+      "name": "file",
+      "file": "SVG/file.svg",
+      "html": "HTML/file.html",
+      "category": "files"
+    },
+    {
+      "name": "file-text",
+      "file": "SVG/file-text.svg",
+      "html": "HTML/file-text.html",
+      "category": "files"
+    },
+    {
+      "name": "file-plus",
+      "file": "SVG/file-plus.svg",
+      "html": "HTML/file-plus.html",
+      "category": "files"
+    },
+    {
+      "name": "file-check",
+      "file": "SVG/file-check.svg",
+      "html": "HTML/file-check.html",
+      "category": "files"
+    },
+    {
+      "name": "file-search",
+      "file": "SVG/file-search.svg",
+      "html": "HTML/file-search.html",
+      "category": "files"
+    },
+    {
+      "name": "folder",
+      "file": "SVG/folder.svg",
+      "html": "HTML/folder.html",
+      "category": "files"
+    },
+    {
+      "name": "folder-open",
+      "file": "SVG/folder-open.svg",
+      "html": "HTML/folder-open.html",
+      "category": "files"
+    },
+    {
+      "name": "clipboard",
+      "file": "SVG/clipboard.svg",
+      "html": "HTML/clipboard.html",
+      "category": "files"
+    },
+    {
+      "name": "clipboard-check",
+      "file": "SVG/clipboard-check.svg",
+      "html": "HTML/clipboard-check.html",
+      "category": "files"
+    },
+    {
+      "name": "clipboard-list",
+      "file": "SVG/clipboard-list.svg",
+      "html": "HTML/clipboard-list.html",
+      "category": "files"
+    },
+    {
+      "name": "notes",
+      "file": "SVG/notes.svg",
+      "html": "HTML/notes.html",
+      "category": "files"
+    },
+    {
+      "name": "document",
+      "file": "SVG/document.svg",
+      "html": "HTML/document.html",
+      "category": "files"
+    },
+    {
+      "name": "archive",
+      "file": "SVG/archive.svg",
+      "html": "HTML/archive.html",
+      "category": "files"
+    },
+    {
+      "name": "list",
+      "file": "SVG/list.svg",
+      "html": "HTML/list.html",
+      "category": "files"
+    },
+    {
+      "name": "list-check",
+      "file": "SVG/list-check.svg",
+      "html": "HTML/list-check.html",
+      "category": "files"
+    },
+    {
+      "name": "receipt",
+      "file": "SVG/receipt.svg",
+      "html": "HTML/receipt.html",
+      "category": "files"
+    },
+    {
+      "name": "download",
+      "file": "SVG/download.svg",
+      "html": "HTML/download.html",
+      "category": "files"
+    },
+    {
+      "name": "upload",
+      "file": "SVG/upload.svg",
+      "html": "HTML/upload.html",
+      "category": "files"
+    },
+    {
+      "name": "save",
+      "file": "SVG/save.svg",
+      "html": "HTML/save.html",
+      "category": "files"
+    },
+    {
+      "name": "print",
+      "file": "SVG/print.svg",
+      "html": "HTML/print.html",
+      "category": "files"
+    },
+    {
+      "name": "share",
+      "file": "SVG/share.svg",
+      "html": "HTML/share.html",
+      "category": "files"
+    },
+    {
+      "name": "link",
+      "file": "SVG/link.svg",
+      "html": "HTML/link.html",
+      "category": "files"
+    },
+    {
+      "name": "copy",
+      "file": "SVG/copy.svg",
+      "html": "HTML/copy.html",
+      "category": "files"
+    },
+    {
+      "name": "credit-card",
+      "file": "SVG/credit-card.svg",
+      "html": "HTML/credit-card.html",
+      "category": "payments"
+    },
+    {
+      "name": "wallet",
+      "file": "SVG/wallet.svg",
+      "html": "HTML/wallet.html",
+      "category": "payments"
+    },
+    {
+      "name": "bank",
+      "file": "SVG/bank.svg",
+      "html": "HTML/bank.html",
+      "category": "payments"
+    },
+    {
+      "name": "money",
+      "file": "SVG/money.svg",
+      "html": "HTML/money.html",
+      "category": "payments"
+    },
+    {
+      "name": "cash",
+      "file": "SVG/cash.svg",
+      "html": "HTML/cash.html",
+      "category": "payments"
+    },
+    {
+      "name": "receipt-check",
+      "file": "SVG/receipt-check.svg",
+      "html": "HTML/receipt-check.html",
+      "category": "payments"
+    },
+    {
+      "name": "payment",
+      "file": "SVG/payment.svg",
+      "html": "HTML/payment.html",
+      "category": "payments"
+    },
+    {
+      "name": "invoice",
+      "file": "SVG/invoice.svg",
+      "html": "HTML/invoice.html",
+      "category": "payments"
+    },
+    {
+      "name": "coin",
+      "file": "SVG/coin.svg",
+      "html": "HTML/coin.html",
+      "category": "payments"
+    },
+    {
+      "name": "percent",
+      "file": "SVG/percent.svg",
+      "html": "HTML/percent.html",
+      "category": "payments"
+    },
+    {
+      "name": "banknote",
+      "file": "SVG/banknote.svg",
+      "html": "HTML/banknote.html",
+      "category": "payments"
+    },
+    {
+      "name": "mail",
+      "file": "SVG/mail.svg",
+      "html": "HTML/mail.html",
+      "category": "messages"
+    },
+    {
+      "name": "mail-open",
+      "file": "SVG/mail-open.svg",
+      "html": "HTML/mail-open.html",
+      "category": "messages"
+    },
+    {
+      "name": "send",
+      "file": "SVG/send.svg",
+      "html": "HTML/send.html",
+      "category": "messages"
+    },
+    {
+      "name": "chat",
+      "file": "SVG/chat.svg",
+      "html": "HTML/chat.html",
+      "category": "messages"
+    },
+    {
+      "name": "chat-bubble",
+      "file": "SVG/chat-bubble.svg",
+      "html": "HTML/chat-bubble.html",
+      "category": "messages"
+    },
+    {
+      "name": "message-circle",
+      "file": "SVG/message-circle.svg",
+      "html": "HTML/message-circle.html",
+      "category": "messages"
+    },
+    {
+      "name": "bell",
+      "file": "SVG/bell.svg",
+      "html": "HTML/bell.html",
+      "category": "messages"
+    },
+    {
+      "name": "bell-ring",
+      "file": "SVG/bell-ring.svg",
+      "html": "HTML/bell-ring.html",
+      "category": "messages"
+    },
+    {
+      "name": "bell-slash",
+      "file": "SVG/bell-slash.svg",
+      "html": "HTML/bell-slash.html",
+      "category": "messages"
+    },
+    {
+      "name": "notification",
+      "file": "SVG/notification.svg",
+      "html": "HTML/notification.html",
+      "category": "messages"
+    },
+    {
+      "name": "comment",
+      "file": "SVG/comment.svg",
+      "html": "HTML/comment.html",
+      "category": "messages"
+    },
+    {
+      "name": "search",
+      "file": "SVG/search.svg",
+      "html": "HTML/search.html",
+      "category": "search"
+    },
+    {
+      "name": "filter",
+      "file": "SVG/filter.svg",
+      "html": "HTML/filter.html",
+      "category": "search"
+    },
+    {
+      "name": "filter-sliders",
+      "file": "SVG/filter-sliders.svg",
+      "html": "HTML/filter-sliders.html",
+      "category": "search"
+    },
+    {
+      "name": "sliders",
+      "file": "SVG/sliders.svg",
+      "html": "HTML/sliders.html",
+      "category": "search"
+    },
+    {
+      "name": "sort",
+      "file": "SVG/sort.svg",
+      "html": "HTML/sort.html",
+      "category": "search"
+    },
+    {
+      "name": "sort-desc",
+      "file": "SVG/sort-desc.svg",
+      "html": "HTML/sort-desc.html",
+      "category": "search"
+    },
+    {
+      "name": "sort-asc",
+      "file": "SVG/sort-asc.svg",
+      "html": "HTML/sort-asc.html",
+      "category": "search"
+    },
+    {
+      "name": "eye",
+      "file": "SVG/eye.svg",
+      "html": "HTML/eye.html",
+      "category": "search"
+    },
+    {
+      "name": "eye-off",
+      "file": "SVG/eye-off.svg",
+      "html": "HTML/eye-off.html",
+      "category": "search"
+    },
+    {
+      "name": "scan-search",
+      "file": "SVG/scan-search.svg",
+      "html": "HTML/scan-search.html",
+      "category": "search"
+    },
+    {
+      "name": "lock",
+      "file": "SVG/lock.svg",
+      "html": "HTML/lock.html",
+      "category": "security"
+    },
+    {
+      "name": "lock-open",
+      "file": "SVG/lock-open.svg",
+      "html": "HTML/lock-open.html",
+      "category": "security"
+    },
+    {
+      "name": "unlock",
+      "file": "SVG/unlock.svg",
+      "html": "HTML/unlock.html",
+      "category": "security"
+    },
+    {
+      "name": "shield",
+      "file": "SVG/shield.svg",
+      "html": "HTML/shield.html",
+      "category": "security"
+    },
+    {
+      "name": "shield-check",
+      "file": "SVG/shield-check.svg",
+      "html": "HTML/shield-check.html",
+      "category": "security"
+    },
+    {
+      "name": "shield-xmark",
+      "file": "SVG/shield-xmark.svg",
+      "html": "HTML/shield-xmark.html",
+      "category": "security"
+    },
+    {
+      "name": "shield-halved",
+      "file": "SVG/shield-halved.svg",
+      "html": "HTML/shield-halved.html",
+      "category": "security"
+    },
+    {
+      "name": "key",
+      "file": "SVG/key.svg",
+      "html": "HTML/key.html",
+      "category": "security"
+    },
+    {
+      "name": "fingerprint",
+      "file": "SVG/fingerprint.svg",
+      "html": "HTML/fingerprint.html",
+      "category": "security"
+    },
+    {
+      "name": "user-shield",
+      "file": "SVG/user-shield.svg",
+      "html": "HTML/user-shield.html",
+      "category": "security"
+    },
+    {
+      "name": "ban",
+      "file": "SVG/ban.svg",
+      "html": "HTML/ban.html",
+      "category": "security"
+    },
+    {
+      "name": "alert-octagon",
+      "file": "SVG/alert-octagon.svg",
+      "html": "HTML/alert-octagon.html",
+      "category": "security"
+    },
+    {
+      "name": "password",
+      "file": "SVG/password.svg",
+      "html": "HTML/password.html",
+      "category": "security"
+    },
+    {
+      "name": "settings",
+      "file": "SVG/settings.svg",
+      "html": "HTML/settings.html",
+      "category": "system"
+    },
+    {
+      "name": "gear",
+      "file": "SVG/gear.svg",
+      "html": "HTML/gear.html",
+      "category": "system"
+    },
+    {
+      "name": "cog",
+      "file": "SVG/cog.svg",
+      "html": "HTML/cog.html",
+      "category": "system"
+    },
+    {
+      "name": "sliders-horizontal",
+      "file": "SVG/sliders-horizontal.svg",
+      "html": "HTML/sliders-horizontal.html",
+      "category": "system"
+    },
+    {
+      "name": "tools",
+      "file": "SVG/tools.svg",
+      "html": "HTML/tools.html",
+      "category": "system"
+    },
+    {
+      "name": "wrench",
+      "file": "SVG/wrench.svg",
+      "html": "HTML/wrench.html",
+      "category": "system"
+    },
+    {
+      "name": "server",
+      "file": "SVG/server.svg",
+      "html": "HTML/server.html",
+      "category": "system"
+    },
+    {
+      "name": "database",
+      "file": "SVG/database.svg",
+      "html": "HTML/database.html",
+      "category": "system"
+    },
+    {
+      "name": "cpu",
+      "file": "SVG/cpu.svg",
+      "html": "HTML/cpu.html",
+      "category": "system"
+    },
+    {
+      "name": "hard-drive",
+      "file": "SVG/hard-drive.svg",
+      "html": "HTML/hard-drive.html",
+      "category": "system"
+    },
+    {
+      "name": "terminal",
+      "file": "SVG/terminal.svg",
+      "html": "HTML/terminal.html",
+      "category": "system"
+    },
+    {
+      "name": "code",
+      "file": "SVG/code.svg",
+      "html": "HTML/code.html",
+      "category": "system"
+    },
+    {
+      "name": "bug",
+      "file": "SVG/bug.svg",
+      "html": "HTML/bug.html",
+      "category": "system"
+    },
+    {
+      "name": "refresh",
+      "file": "SVG/refresh.svg",
+      "html": "HTML/refresh.html",
+      "category": "system"
+    },
+    {
+      "name": "refresh-cw",
+      "file": "SVG/refresh-cw.svg",
+      "html": "HTML/refresh-cw.html",
+      "category": "system"
+    },
+    {
+      "name": "spinner",
+      "file": "SVG/spinner.svg",
+      "html": "HTML/spinner.html",
+      "category": "system"
+    },
+    {
+      "name": "cloud",
+      "file": "SVG/cloud.svg",
+      "html": "HTML/cloud.html",
+      "category": "system"
+    },
+    {
+      "name": "cloud-off",
+      "file": "SVG/cloud-off.svg",
+      "html": "HTML/cloud-off.html",
+      "category": "system"
+    },
+    {
+      "name": "wifi",
+      "file": "SVG/wifi.svg",
+      "html": "HTML/wifi.html",
+      "category": "system"
+    },
+    {
+      "name": "wifi-off",
+      "file": "SVG/wifi-off.svg",
+      "html": "HTML/wifi-off.html",
+      "category": "system"
+    },
+    {
+      "name": "plug",
+      "file": "SVG/plug.svg",
+      "html": "HTML/plug.html",
+      "category": "system"
+    },
+    {
+      "name": "power",
+      "file": "SVG/power.svg",
+      "html": "HTML/power.html",
+      "category": "system"
+    },
+    {
+      "name": "toggle-on",
+      "file": "SVG/toggle-on.svg",
+      "html": "HTML/toggle-on.html",
+      "category": "system"
+    },
+    {
+      "name": "toggle-off",
+      "file": "SVG/toggle-off.svg",
+      "html": "HTML/toggle-off.html",
+      "category": "system"
+    },
+    {
+      "name": "layers",
+      "file": "SVG/layers.svg",
+      "html": "HTML/layers.html",
+      "category": "system"
+    },
+    {
+      "name": "globe",
+      "file": "SVG/globe.svg",
+      "html": "HTML/globe.html",
+      "category": "system"
+    },
+    {
+      "name": "globe-check",
+      "file": "SVG/globe-check.svg",
+      "html": "HTML/globe-check.html",
+      "category": "system"
+    },
+    {
+      "name": "check-circle",
+      "file": "SVG/check-circle.svg",
+      "html": "HTML/check-circle.html",
+      "category": "status"
+    },
+    {
+      "name": "xmark-circle",
+      "file": "SVG/xmark-circle.svg",
+      "html": "HTML/xmark-circle.html",
+      "category": "status"
+    },
+    {
+      "name": "info-circle",
+      "file": "SVG/info-circle.svg",
+      "html": "HTML/info-circle.html",
+      "category": "status"
+    },
+    {
+      "name": "alert-triangle",
+      "file": "SVG/alert-triangle.svg",
+      "html": "HTML/alert-triangle.html",
+      "category": "status"
+    },
+    {
+      "name": "alert-circle",
+      "file": "SVG/alert-circle.svg",
+      "html": "HTML/alert-circle.html",
+      "category": "status"
+    },
+    {
+      "name": "help-circle",
+      "file": "SVG/help-circle.svg",
+      "html": "HTML/help-circle.html",
+      "category": "status"
+    },
+    {
+      "name": "question",
+      "file": "SVG/question.svg",
+      "html": "HTML/question.html",
+      "category": "status"
+    },
+    {
+      "name": "exclamation",
+      "file": "SVG/exclamation.svg",
+      "html": "HTML/exclamation.html",
+      "category": "status"
+    },
+    {
+      "name": "warning",
+      "file": "SVG/warning.svg",
+      "html": "HTML/warning.html",
+      "category": "status"
+    },
+    {
+      "name": "success-check",
+      "file": "SVG/success-check.svg",
+      "html": "HTML/success-check.html",
+      "category": "status"
+    },
+    {
+      "name": "ban-circle",
+      "file": "SVG/ban-circle.svg",
+      "html": "HTML/ban-circle.html",
+      "category": "status"
+    },
+    {
+      "name": "chart-line",
+      "file": "SVG/chart-line.svg",
+      "html": "HTML/chart-line.html",
+      "category": "admin"
+    },
+    {
+      "name": "chart-bar",
+      "file": "SVG/chart-bar.svg",
+      "html": "HTML/chart-bar.html",
+      "category": "admin"
+    },
+    {
+      "name": "chart-pie",
+      "file": "SVG/chart-pie.svg",
+      "html": "HTML/chart-pie.html",
+      "category": "admin"
+    },
+    {
+      "name": "chart-area",
+      "file": "SVG/chart-area.svg",
+      "html": "HTML/chart-area.html",
+      "category": "admin"
+    },
+    {
+      "name": "trending-up",
+      "file": "SVG/trending-up.svg",
+      "html": "HTML/trending-up.html",
+      "category": "admin"
+    },
+    {
+      "name": "trending-down",
+      "file": "SVG/trending-down.svg",
+      "html": "HTML/trending-down.html",
+      "category": "admin"
+    },
+    {
+      "name": "analytics",
+      "file": "SVG/analytics.svg",
+      "html": "HTML/analytics.html",
+      "category": "admin"
+    },
+    {
+      "name": "gauge",
+      "file": "SVG/gauge.svg",
+      "html": "HTML/gauge.html",
+      "category": "admin"
+    },
+    {
+      "name": "activity",
+      "file": "SVG/activity.svg",
+      "html": "HTML/activity.html",
+      "category": "admin"
+    },
+    {
+      "name": "target",
+      "file": "SVG/target.svg",
+      "html": "HTML/target.html",
+      "category": "admin"
+    },
+    {
+      "name": "grid",
+      "file": "SVG/grid.svg",
+      "html": "HTML/grid.html",
+      "category": "admin"
+    },
+    {
+      "name": "layout",
+      "file": "SVG/layout.svg",
+      "html": "HTML/layout.html",
+      "category": "admin"
+    },
+    {
+      "name": "newspaper",
+      "file": "SVG/newspaper.svg",
+      "html": "HTML/newspaper.html",
+      "category": "admin"
+    },
+    {
+      "name": "monitor",
+      "file": "SVG/monitor.svg",
+      "html": "HTML/monitor.html",
+      "category": "admin"
+    },
+    {
+      "name": "building",
+      "file": "SVG/building.svg",
+      "html": "HTML/building.html",
+      "category": "admin"
+    },
+    {
+      "name": "hospital",
+      "file": "SVG/hospital.svg",
+      "html": "HTML/hospital.html",
+      "category": "admin"
+    },
+    {
+      "name": "clinic",
+      "file": "SVG/clinic.svg",
+      "html": "HTML/clinic.html",
+      "category": "admin"
+    },
+    {
+      "name": "sign-in",
+      "file": "SVG/sign-in.svg",
+      "html": "HTML/sign-in.html",
+      "category": "admin"
+    },
+    {
+      "name": "sign-out",
+      "file": "SVG/sign-out.svg",
+      "html": "HTML/sign-out.html",
+      "category": "admin"
+    },
+    {
+      "name": "external-link",
+      "file": "SVG/external-link.svg",
+      "html": "HTML/external-link.html",
+      "category": "admin"
+    },
+    {
+      "name": "bookmark",
+      "file": "SVG/bookmark.svg",
+      "html": "HTML/bookmark.html",
+      "category": "admin"
+    },
+    {
+      "name": "star",
+      "file": "SVG/star.svg",
+      "html": "HTML/star.html",
+      "category": "admin"
+    },
+    {
+      "name": "star-half",
+      "file": "SVG/star-half.svg",
+      "html": "HTML/star-half.html",
+      "category": "admin"
+    },
+    {
+      "name": "heart",
+      "file": "SVG/heart.svg",
+      "html": "HTML/heart.html",
+      "category": "admin"
+    },
+    {
+      "name": "thumbs-up",
+      "file": "SVG/thumbs-up.svg",
+      "html": "HTML/thumbs-up.html",
+      "category": "admin"
+    },
+    {
+      "name": "flag",
+      "file": "SVG/flag.svg",
+      "html": "HTML/flag.html",
+      "category": "admin"
+    },
+    {
+      "name": "gift",
+      "file": "SVG/gift.svg",
+      "html": "HTML/gift.html",
+      "category": "admin"
+    },
+    {
+      "name": "tag-percent",
+      "file": "SVG/tag-percent.svg",
+      "html": "HTML/tag-percent.html",
+      "category": "admin"
+    },
+    {
+      "name": "phone",
+      "file": "SVG/phone.svg",
+      "html": "HTML/phone.html",
+      "category": "misc"
+    },
+    {
+      "name": "smartphone",
+      "file": "SVG/smartphone.svg",
+      "html": "HTML/smartphone.html",
+      "category": "misc"
+    },
+    {
+      "name": "tablet",
+      "file": "SVG/tablet.svg",
+      "html": "HTML/tablet.html",
+      "category": "misc"
+    },
+    {
+      "name": "laptop",
+      "file": "SVG/laptop.svg",
+      "html": "HTML/laptop.html",
+      "category": "misc"
+    },
+    {
+      "name": "camera",
+      "file": "SVG/camera.svg",
+      "html": "HTML/camera.html",
+      "category": "misc"
+    },
+    {
+      "name": "image",
+      "file": "SVG/image.svg",
+      "html": "HTML/image.html",
+      "category": "misc"
+    },
+    {
+      "name": "video",
+      "file": "SVG/video.svg",
+      "html": "HTML/video.html",
+      "category": "misc"
+    },
+    {
+      "name": "video-slash",
+      "file": "SVG/video-slash.svg",
+      "html": "HTML/video-slash.html",
+      "category": "misc"
+    },
+    {
+      "name": "play",
+      "file": "SVG/play.svg",
+      "html": "HTML/play.html",
+      "category": "misc"
+    },
+    {
+      "name": "pause",
+      "file": "SVG/pause.svg",
+      "html": "HTML/pause.html",
+      "category": "misc"
+    },
+    {
+      "name": "microphone",
+      "file": "SVG/microphone.svg",
+      "html": "HTML/microphone.html",
+      "category": "misc"
+    },
+    {
+      "name": "volume",
+      "file": "SVG/volume.svg",
+      "html": "HTML/volume.html",
+      "category": "misc"
+    },
+    {
+      "name": "headset",
+      "file": "SVG/headset.svg",
+      "html": "HTML/headset.html",
+      "category": "misc"
+    },
+    {
+      "name": "language",
+      "file": "SVG/language.svg",
+      "html": "HTML/language.html",
+      "category": "misc"
+    },
+    {
+      "name": "translate",
+      "file": "SVG/translate.svg",
+      "html": "HTML/translate.html",
+      "category": "misc"
+    },
+    {
+      "name": "moon",
+      "file": "SVG/moon.svg",
+      "html": "HTML/moon.html",
+      "category": "misc"
+    },
+    {
+      "name": "sun",
+      "file": "SVG/sun.svg",
+      "html": "HTML/sun.html",
+      "category": "misc"
+    },
+    {
+      "name": "sparkles",
+      "file": "SVG/sparkles.svg",
+      "html": "HTML/sparkles.html",
+      "category": "misc"
+    },
+    {
+      "name": "palette",
+      "file": "SVG/palette.svg",
+      "html": "HTML/palette.html",
+      "category": "misc"
+    },
+    {
+      "name": "brush",
+      "file": "SVG/brush.svg",
+      "html": "HTML/brush.html",
+      "category": "misc"
+    },
+    {
+      "name": "paint-roller",
+      "file": "SVG/paint-roller.svg",
+      "html": "HTML/paint-roller.html",
+      "category": "misc"
+    },
+    {
+      "name": "anchor",
+      "file": "SVG/anchor.svg",
+      "html": "HTML/anchor.html",
+      "category": "misc"
+    },
+    {
+      "name": "fire",
+      "file": "SVG/fire.svg",
+      "html": "HTML/fire.html",
+      "category": "misc"
+    },
+    {
+      "name": "lightbulb",
+      "file": "SVG/lightbulb.svg",
+      "html": "HTML/lightbulb.html",
+      "category": "misc"
+    },
+    {
+      "name": "rocket",
+      "file": "SVG/rocket.svg",
+      "html": "HTML/rocket.html",
+      "category": "misc"
+    },
+    {
+      "name": "robot",
+      "file": "SVG/robot.svg",
+      "html": "HTML/robot.html",
+      "category": "misc"
+    },
+    {
+      "name": "calendar-sync",
+      "file": "SVG/calendar-sync.svg",
+      "html": "HTML/calendar-sync.html",
+      "category": "misc"
+    }
+  ]
+}

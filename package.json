@@ -8,7 +8,8 @@
     "test:syntax": "node tests/esm-syntax.mjs",
     "test:imports": "node tests/imports.mjs",
     "test:data": "node scripts/validate-data.mjs",
-    "test": "npm run test:syntax && npm run test:imports && npm run test:data && node tests/boot.mjs",
+    "test:qa": "node scripts/qa.mjs",
+    "test": "npm run test:syntax && npm run test:imports && npm run test:data && npm run test:qa && node tests/boot.mjs",
     "validate": "npm test"
   },
   "devDependencies": {

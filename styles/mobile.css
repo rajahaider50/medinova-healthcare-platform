@@ -111,6 +111,15 @@
   margin-top: 2px;
 }
 
+/* ---------- Drawer open state ---------- */
+body.drawer-open {
+  overflow: hidden;
+}
+body.drawer-open .app-main,
+body.drawer-open .top-header {
+  filter: saturate(0.6) brightness(0.96);
+}
+
 /* ---------- Mobile safe areas ---------- */
 @supports (padding: env(safe-area-inset-left)) {
   .app-content {

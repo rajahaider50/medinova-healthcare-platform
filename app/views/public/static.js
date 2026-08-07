@@ -4,10 +4,10 @@
  */
 
 import { h } from "../../utils/html.js";
-import { platformSettings } from "../../data/mock/settings.js";
+import * as Brand from "../../services/BrandService.js";
 
 export function prosePage({ title, lead, sections = [] }) {
-  const brand = platformSettings.brand;
+  const brand = Brand.getBrand();
   return h("div", { class: "anim-fade-up", style: { maxWidth: "760px", margin: "0 auto", padding: "24px 0" } }, [
     h("h1", { style: { fontSize: "30px", margin: "0 0 8px" } }, title),
     lead ? h("p", { style: { color: "var(--text-secondary)", margin: "0 0 24px" } }, lead) : null,

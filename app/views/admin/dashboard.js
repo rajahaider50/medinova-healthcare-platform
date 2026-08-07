@@ -5,9 +5,7 @@
 import { h } from "../../utils/html.js";
 import { currentUser } from "../../services/AuthService.js";
 import Admin from "../../services/AdminDataService.js";
-import { money } from "../../utils/format.js";
 import { timeAgo } from "../../utils/date.js";
-import { analytics } from "../../data/mock/reviews.js";
 
 const TONE = { confirmed: "success", pending: "warning", completed: "info", cancelled: "danger", "no-show": "neutral" };
 
@@ -16,6 +14,7 @@ export async function view() {
   const c = Admin.counts();
   const recent = Admin.recentAppointments(6);
   const statusBy = Admin.appointmentsByStatus();
+  const revenue = Admin.revenueSeries();
 
   const header = h("div", { class: "flex items-center justify-between flex-wrap gap-3", style: { marginBottom: "24px" } }, [
     h("div", {}, [
@@ -35,12 +34,12 @@ export async function view() {
     h("mn-stat", { label: "Appointments", value: String(c.appointments), icon: "calendar-check", tone: "warning", sub: `${statusBy.pending || 0} pending` }),
   ]);
 
-  const revenue = h("div", { class: "mn-panel glass" }, [
-    h("div", { class: "glass-header" }, [h("div", { class: "panel-heading" }, [h("div", { class: "icon-box icon-box-sm" }, h("i", { class: "fa-solid fa-chart-line" })), h("div", {}, [h("div", { class: "panel-title" }, "Revenue Trend"), h("div", { class: "panel-subtitle" }, "Monthly earnings (demo)")])])]),
+  const revenuePanel = h("div", { class: "mn-panel glass" }, [
+    h("div", { class: "glass-header" }, [h("div", { class: "panel-heading" }, [h("div", { class: "icon-box icon-box-sm" }, h("i", { class: "fa-solid fa-chart-line" })), h("div", {}, [h("div", { class: "panel-title" }, "Revenue Trend"), h("div", { class: "panel-subtitle" }, "Monthly earnings from orders")])])]),
     h("div", { class: "glass-body" }, h("mn-chart", {
       type: "line",
-      labels: analytics.revenue.map((r) => r.label).join(","),
-      data: JSON.stringify(analytics.revenue.map((r) => r.value)),
+      labels: revenue.map((r) => r.label).join(","),
+      data: JSON.stringify(revenue.map((r) => r.value)),
       height: "220",
     })),
   ]);
@@ -86,7 +85,7 @@ export async function view() {
     header,
     stats,
     orderStats,
-    h("div", { class: "grid", style: { gridTemplateColumns: "1.5fr 1fr", marginBottom: "24px" } }, [revenue, statusChart]),
+    h("div", { class: "grid", style: { gridTemplateColumns: "1.5fr 1fr", marginBottom: "24px" } }, [revenuePanel, statusChart]),
     recentPanel,
   ]);
 }

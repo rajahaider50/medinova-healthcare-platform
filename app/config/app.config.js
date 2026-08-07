@@ -39,7 +39,7 @@ export const FEATURES = {
   darkMode: true,
   language: "en",
   registrationEnabled: true,
-  demoMode: true,
+  demoMode: false,
 };
 
 /** App storage keys. */
@@ -56,11 +56,4 @@ export const STORAGE_KEYS = {
   onboarding: "medinova.onboarding",
 };
 
-/** Demo accounts (isolated mock credentials). */
-export const DEMO_ACCOUNTS = {
-  user: { email: "patient@medinova.app", password: "Patient@123", name: "Ayesha Khan" },
-  admin: { email: "admin@medinova.app", password: "Admin@123", name: "Admin MediNova" },
-  doctor: { email: "doctor@medinova.app", password: "Doctor@123", name: "Dr. Salman Raza" },
-};
-
-export default { APP_NAME, APP_TAGLINE, APP_VERSION, APP_BRAND, REPO_NAME, GITHUB_USER, IS_DEV, ENV, BASE_PATH, CURRENCY, CURRENCY_CODE, LOCALE, TIMEZONE, FEATURES, STORAGE_KEYS, DEMO_ACCOUNTS };
+export default { APP_NAME, APP_TAGLINE, APP_VERSION, APP_BRAND, REPO_NAME, GITHUB_USER, IS_DEV, ENV, BASE_PATH, CURRENCY, CURRENCY_CODE, LOCALE, TIMEZONE, FEATURES, STORAGE_KEYS };

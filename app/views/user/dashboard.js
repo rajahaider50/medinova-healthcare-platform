@@ -7,7 +7,7 @@ import * as Router from "../../router/Router.js";
 import * as Store from "../../state/store.js";
 import { currentUser } from "../../services/AuthService.js";
 import UserData from "../../services/UserDataService.js";
-import { doctors } from "../../data/mock/doctors.js";
+import * as Db from "../../data/db.js";
 import { formatDate, timeAgo } from "../../utils/date.js";
 import { money } from "../../utils/format.js";
 
@@ -30,6 +30,7 @@ export async function view() {
   const records = UserData.myRecords();
   const upcoming = UserData.upcomingAppointments(3);
   const unread = UserData.unreadNotifications();
+  const doctors = Db.collection("doctors").all();
 
   Store.set("unreadNotifications", unread);
 
@@ -99,7 +100,7 @@ export async function view() {
       ]),
       h("a", { class: "btn btn-ghost btn-sm", href: "#/doctors" }, "View all"),
     ]),
-    h("div", { class: "glass-body", style: { padding: 0 } }, doctors.slice(0, 4).map((d) =>
+    h("div", { class: "glass-body", style: { padding: 0 } }, doctors.length ? doctors.slice(0, 4).map((d) =>
       h("a", { class: "doc-row", href: `#/doctors/${d.slug}`, style: { display: "flex", gap: "12px", alignItems: "center", padding: "12px 20px", borderBottom: "1px solid var(--glass-border)", textDecoration: "none", color: "inherit" } }, [
         h("span", { class: "avatar avatar-md" }, h("span", {}, d.name.replace("Dr. ", "").split(" ").map((p) => p[0]).slice(0, 2).join(""))),
         h("div", { style: { flex: 1, minWidth: 0 } }, [
@@ -107,12 +108,12 @@ export async function view() {
           h("div", { style: { color: "var(--text-muted)", fontSize: "12px" } }, d.specialty),
         ]),
         h("div", { style: { textAlign: "right" } }, [
-          h("div", { style: { fontWeight: 600, fontSize: "13px" } }, money(d.fee)),
-          h("div", { class: "rating", style: { justifyContent: "flex-end" } }, h("i", { class: "fa-solid fa-star" }), h("span", { class: "rating-count" }, d.rating)),
+          h("div", { style: { fontWeight: 600, fontSize: "13px" } }, money(d.fee || 0)),
+          h("div", { class: "rating", style: { justifyContent: "flex-end" } }, h("i", { class: "fa-solid fa-star" }), h("span", { class: "rating-count" }, d.rating || 0)),
         ]),
-      ]))),
+      ])) :
+    h("div", { style: { padding: "24px" } }, h("mn-empty", { icon: "user-doctor", title: "No doctors yet", text: "Doctors will appear here once added by admins." }))),
   ]);
-
   const recent = h("div", { class: "mn-panel glass" }, [
     h("div", { class: "glass-header" }, [
       h("div", { class: "panel-heading" }, [

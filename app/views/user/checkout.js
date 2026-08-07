@@ -10,12 +10,12 @@ import { CartService } from "../../services/CartService.js";
 import { currentUser } from "../../services/AuthService.js";
 import { uid } from "../../utils/id.js";
 import { money } from "../../utils/format.js";
-import { platformSettings } from "../../data/mock/settings.js";
+import * as Brand from "../../services/BrandService.js";
 
 export async function view() {
   const items = CartService.cart();
   const user = currentUser();
-  const settings = platformSettings;
+  const settings = Brand.getSettings();
   const subtotal = CartService.subtotal();
   const deliveryFee = subtotal >= settings.pharmacy.freeDeliveryAbove ? 0 : settings.pharmacy.deliveryFee;
   const total = subtotal + deliveryFee;

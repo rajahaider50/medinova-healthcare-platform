@@ -6,13 +6,13 @@ import { h } from "../../utils/html.js";
 import * as Router from "../../router/Router.js";
 import * as Toast from "../../services/ToastService.js";
 import { CartService } from "../../services/CartService.js";
+import * as Brand from "../../services/BrandService.js";
 import { money } from "../../utils/format.js";
-import { platformSettings } from "../../data/mock/settings.js";
 
 export async function view() {
   const items = CartService.cart();
   const subtotal = CartService.subtotal();
-  const settings = platformSettings;
+  const settings = Brand.getSettings();
   const deliveryFee = subtotal === 0 ? 0 : subtotal >= settings.pharmacy.freeDeliveryAbove ? 0 : settings.pharmacy.deliveryFee;
   const total = subtotal + deliveryFee;
 
